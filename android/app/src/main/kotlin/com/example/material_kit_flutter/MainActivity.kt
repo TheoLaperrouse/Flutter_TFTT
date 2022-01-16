@@ -1,4 +1,4 @@
-package com.example.material_kit_flutter
+package com.example.flutter_tftt
 
 import io.flutter.embedding.android.FlutterActivity
 

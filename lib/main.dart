@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 // screens
-import 'package:material_kit_flutter/screens/home.dart';
-import 'package:material_kit_flutter/screens/profile.dart';
-import 'package:material_kit_flutter/screens/settings.dart';
-import 'package:material_kit_flutter/screens/components.dart';
-import 'package:material_kit_flutter/screens/onboarding.dart';
+import 'package:flutter_tftt/screens/home.dart';
+import 'package:flutter_tftt/screens/profile.dart';
+import 'package:flutter_tftt/screens/settings.dart';
+import 'package:flutter_tftt/screens/components.dart';
+import 'package:flutter_tftt/screens/onboarding.dart';
 
 void main() => runApp(MaterialKitPROFlutter());
 

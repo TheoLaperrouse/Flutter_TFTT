@@ -1,4 +1,4 @@
-name: material_kit_flutter
+name: flutter_tftt
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -26,6 +26,9 @@ dependencies:
   scrollable_positioned_list: ^0.1.7
   carousel_slider: ^2.2.1
   font_awesome_flutter: ^8.8.1
+  firebase_auth: ^3.3.5
+  firebase_core: ^1.11.0
+  cloud_firestore: ^3.1.6
 
 
   # The following adds the Cupertino Icons font to your application.

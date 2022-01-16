@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:material_kit_flutter/constants/Theme.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 
 //widgets
-import 'package:material_kit_flutter/widgets/navbar.dart';
-import 'package:material_kit_flutter/widgets/table-cell.dart';
+import 'package:flutter_tftt/widgets/navbar.dart';
+import 'package:flutter_tftt/widgets/table-cell.dart';
 
-import 'package:material_kit_flutter/widgets/drawer.dart';
+import 'package:flutter_tftt/widgets/drawer.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -29,9 +29,9 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Navbar(
-          title: "Settings",
+          title: "Paramètres",
         ),
-        drawer: MaterialDrawer(currentPage: "Settings"),
+        drawer: MaterialDrawer(currentPage: "Paramètres"),
         backgroundColor: MaterialColors.bgColorScreen,
         body: Container(
             child: SingleChildScrollView(
@@ -43,7 +43,7 @@ class _SettingsState extends State<Settings> {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 8.0),
-                    child: Text("Recommended Settings",
+                    child: Text("Paramètres de profil",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
@@ -58,60 +58,12 @@ class _SettingsState extends State<Settings> {
                             color: MaterialColors.caption, fontSize: 14)),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Use FaceID to signin",
-                        style: TextStyle(color: Colors.black)),
-                    Switch.adaptive(
-                      value: switchValueOne,
-                      onChanged: (bool newValue) =>
-                          setState(() => switchValueOne = newValue),
-                      activeColor: MaterialColors.primary,
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Auto-Lock security",
-                        style: TextStyle(color: Colors.black)),
-                    Switch.adaptive(
-                      value: switchValueTwo,
-                      onChanged: (bool newValue) =>
-                          setState(() => switchValueTwo = newValue),
-                      activeColor: MaterialColors.primary,
-                    )
-                  ],
-                ),
                 TableCellSettings(
                     title: "Notifications",
                     onTap: () {
                       Navigator.pushReplacementNamed(context, '/pro');
                     }),
                 SizedBox(height: 36.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: Text("Payment Settings",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18)),
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text("These are also important settings",
-                        style: TextStyle(color: MaterialColors.caption)),
-                  ),
-                ),
-                TableCellSettings(title: "Manage Payment Options"),
-                TableCellSettings(title: "Manage Gift Cards"),
-                SizedBox(
-                  height: 36.0,
-                ),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 16.0),

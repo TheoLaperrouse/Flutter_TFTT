@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
-import 'package:material_kit_flutter/constants/Theme.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 
-import 'package:material_kit_flutter/widgets/drawer-tile.dart';
+import 'package:flutter_tftt/widgets/drawer-tile.dart';
 
 class MaterialDrawer extends StatelessWidget {
   final String currentPage;
@@ -78,66 +78,40 @@ class MaterialDrawer extends StatelessWidget {
             DrawerTile(
                 icon: Icons.home,
                 onTap: () {
-                  if (currentPage != "Home")
+                  if (currentPage != "Posts du TFTT")
                     Navigator.pushReplacementNamed(context, '/home');
                 },
                 iconColor: Colors.black,
-                title: "Home",
-                isSelected: currentPage == "Home" ? true : false),
+                title: "Posts du TFTT",
+                isSelected: currentPage == "Posts du TFTT" ? true : false),
             DrawerTile(
                 icon: Icons.grain,
                 onTap: () {
-                  if (currentPage != "New Collection")
-                    Navigator.pushReplacementNamed(context, '/home');
-                },
-                iconColor: Colors.black,
-                title: "New Collection",
-                isSelected: currentPage == "New Collection" ? true : false),
-            DrawerTile(
-                icon: Icons.settings_input_component,
-                onTap: () {
-                  if (currentPage != "Components")
+                  if (currentPage != "Réservation de tables")
                     Navigator.pushReplacementNamed(context, '/components');
                 },
                 iconColor: Colors.black,
-                title: "Components",
-                isSelected: currentPage == "Components" ? true : false),
+                title: "Réservation de tables",
+                isSelected:
+                    currentPage == "Réservation de tables" ? true : false),
             DrawerTile(
                 icon: Icons.account_circle,
                 onTap: () {
-                  if (currentPage != "Profile")
+                  if (currentPage != "Mon profil")
                     Navigator.pushReplacementNamed(context, '/profile');
                 },
                 iconColor: Colors.black,
-                title: "Profile",
-                isSelected: currentPage == "Profile" ? true : false),
+                title: "Mon profil",
+                isSelected: currentPage == "Mon profil" ? true : false),
             DrawerTile(
                 icon: Icons.settings,
                 onTap: () {
-                  if (currentPage != "Settings")
+                  if (currentPage != "Paramètres")
                     Navigator.pushReplacementNamed(context, '/settings');
                 },
                 iconColor: Colors.black,
-                title: "Settings",
-                isSelected: currentPage == "Settings" ? true : false),
-            DrawerTile(
-                icon: Icons.exit_to_app,
-                onTap: () {
-                  if (currentPage != "Sign In")
-                    Navigator.pushReplacementNamed(context, '/signin');
-                },
-                iconColor: Colors.black,
-                title: "Sign In",
-                isSelected: currentPage == "Sign In" ? true : false),
-            DrawerTile(
-                icon: Icons.open_in_browser,
-                onTap: () {
-                  if (currentPage != "Sign Up")
-                    Navigator.pushReplacementNamed(context, '/signup');
-                },
-                iconColor: Colors.black,
-                title: "Sign Up",
-                isSelected: currentPage == "Sign Up" ? true : false),
+                title: "Paramètres",
+                isSelected: currentPage == "Paramètres" ? true : false),
           ],
         ))
       ])),

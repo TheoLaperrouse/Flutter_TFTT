@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:material_kit_flutter/constants/Theme.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 
-// import 'package:material_kit_flutter/screens/categories.dart';
-// import 'package:material_kit_flutter/screens/best-deals.dart';
-// import 'package:material_kit_flutter/screens/search.dart';
-// import 'package:material_kit_flutter/screens/cart.dart';
-// import 'package:material_kit_flutter/screens/chat.dart';
+// import 'package:flutter_tftt/screens/categories.dart';
+// import 'package:flutter_tftt/screens/best-deals.dart';
+// import 'package:flutter_tftt/screens/search.dart';
+// import 'package:flutter_tftt/screens/cart.dart';
+// import 'package:flutter_tftt/screens/chat.dart';
 
-import 'package:material_kit_flutter/widgets/input.dart';
+import 'package:flutter_tftt/widgets/input.dart';
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -44,7 +44,7 @@ class Navbar extends StatefulWidget implements PreferredSizeWidget {
       this.bgColor = Colors.white,
       this.searchBar = false});
 
-  final double _prefferedHeight = 180.0;
+  final double _prefferedHeight = 150.0;
 
   @override
   _NavbarState createState() => _NavbarState();
@@ -67,13 +67,8 @@ class _NavbarState extends State<Navbar> {
 
   @override
   Widget build(BuildContext context) {
-    final bool categories =
-        widget.categoryOne.isNotEmpty && widget.categoryTwo.isNotEmpty;
-    final bool tagsExist =
-        widget.tags == null ? false : (widget.tags.length == 0 ? false : true);
-
     return Container(
-        height: 150,
+        height: 90,
         decoration: BoxDecoration(
             color: !widget.transparent ? widget.bgColor : Colors.transparent,
             boxShadow: [
@@ -170,28 +165,6 @@ class _NavbarState extends State<Navbar> {
                       )
                   ],
                 ),
-                if (widget.searchBar)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 8, bottom: 4, left: 15, right: 15),
-                    child: Input(
-                        placeholder: "What are you looking for?",
-                        controller: widget.searchController,
-                        onChanged: widget.searchOnChanged,
-                        autofocus: widget.searchAutofocus,
-                        outlineBorder: true,
-                        enabledBorderColor: Colors.black.withOpacity(0.2),
-                        focusedBorderColor: MaterialColors.muted,
-                        suffixIcon:
-                            Icon(Icons.zoom_in, color: MaterialColors.muted),
-                        onTap: () {
-                          // if (!widget.isOnSearch)
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => Search()));
-                        }),
-                  ),
               ],
             ),
           ),

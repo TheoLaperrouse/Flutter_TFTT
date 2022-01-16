@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-import 'package:material_kit_flutter/constants/Theme.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 
 class Onboarding extends StatelessWidget {
   @override
