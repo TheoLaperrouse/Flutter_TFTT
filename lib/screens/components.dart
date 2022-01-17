@@ -7,7 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 import 'package:flutter_tftt/widgets/input.dart';
-import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/slider-product.dart';
 import 'package:flutter_tftt/widgets/photo-album.dart';
 

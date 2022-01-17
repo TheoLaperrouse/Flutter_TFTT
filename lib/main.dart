@@ -6,6 +6,7 @@ import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/components.dart';
 import 'package:flutter_tftt/screens/onboarding.dart';
+import 'package:flutter_tftt/screens/calculator.dart';
 
 void main() => runApp(MaterialKitPROFlutter());
 
@@ -20,6 +21,7 @@ class MaterialKitPROFlutter extends StatelessWidget {
           "/onboarding": (BuildContext context) => new Onboarding(),
           "/home": (BuildContext context) => new Home(),
           "/components": (BuildContext context) => new Components(),
+          "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
           "/settings": (BuildContext context) => new Settings(),
         });

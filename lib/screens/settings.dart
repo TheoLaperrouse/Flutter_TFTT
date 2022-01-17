@@ -5,7 +5,6 @@ import 'package:flutter_tftt/constants/Theme.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/table-cell.dart';
-
 import 'package:flutter_tftt/widgets/drawer.dart';
 
 class Settings extends StatefulWidget {

@@ -73,7 +73,7 @@ class CardHorizontal extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         image: DecorationImage(
-                            image: NetworkImage(img), fit: BoxFit.cover))),
+                            image: AssetImage(img), fit: BoxFit.cover))),
               ),
             ),
           ]),

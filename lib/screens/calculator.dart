@@ -21,20 +21,52 @@ List<Map<String, double>> ecartPoints = [
     "def_anor": 1,
     "vic_anor": 2
   },
-  {"ecartMax": 99, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
-  {"ecartMax": 199, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
-  {"ecartMax": 299, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
-  {"ecartMax": 399, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
-  {"ecartMax": 499, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
-  {"ecartMax": 1000, "def_nor": 1, "vic_nor": 2, "def_anor": 1, "vic_anor": 2},
+  {
+    "ecartMax": 49,
+    "def_nor": -4.5,
+    "vic_nor": 5,
+    "def_anor": -6,
+    "vic_anor": 7
+  },
+  {"ecartMax": 99, "def_nor": -4, "vic_nor": 5, "def_anor": -7, "vic_anor": 8},
+  {"ecartMax": 149, "def_nor": -3, "vic_nor": 5, "def_anor": -7, "vic_anor": 8},
+  {
+    "ecartMax": 199,
+    "def_nor": -2,
+    "vic_nor": 3,
+    "def_anor": -10,
+    "vic_anor": 13
+  },
+  {
+    "ecartMax": 299,
+    "def_nor": -1,
+    "vic_nor": 2,
+    "def_anor": -12.5,
+    "vic_anor": 2
+  },
+  {
+    "ecartMax": 399,
+    "def_nor": -0.5,
+    "vic_nor": 1,
+    "def_anor": -16,
+    "vic_anor": 2
+  },
+  {
+    "ecartMax": 499,
+    "def_nor": -1,
+    "vic_nor": 0.5,
+    "def_anor": 1,
+    "vic_anor": 2
+  },
+  {"ecartMax": 1000, "def_nor": 0, "vic_nor": 0, "def_anor": 1, "vic_anor": 2},
 ];
 
-class Components extends StatefulWidget {
+class Calculator extends StatefulWidget {
   @override
-  _ComponentsState createState() => _ComponentsState();
+  _CalculatorState createState() => _CalculatorState();
 }
 
-class _ComponentsState extends State<Components> {
+class _CalculatorState extends State<Calculator> {
   bool switchValueOne;
   bool switchValueTwo;
 
@@ -53,7 +85,7 @@ class _ComponentsState extends State<Components> {
           title: "Calculateur de Points",
         ),
         backgroundColor: MaterialColors.bgColorScreen,
-        drawer: MaterialDrawer(currentPage: "Components"),
+        drawer: MaterialDrawer(currentPage: "Calculator"),
         body: SingleChildScrollView(
             child: Padding(
           padding: EdgeInsets.only(right: 24, left: 24, bottom: 36),

@@ -11,7 +11,7 @@ class Onboarding extends StatelessWidget {
       Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/img/onboard-background-free.jpg"),
+                  image: AssetImage("assets/img/onboarding.jpg"),
                   fit: BoxFit.cover))),
       Padding(
         padding:
@@ -29,17 +29,9 @@ class Onboarding extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 48.0),
                       child: Text.rich(TextSpan(
-                        text: "Application du TFTT",
+                        text: "TFTT",
                         style: TextStyle(color: Colors.white, fontSize: 58),
                       )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 24.0),
-                      child: Text("Développé en Flutter",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w200)),
                     ),
                   ],
                 ),

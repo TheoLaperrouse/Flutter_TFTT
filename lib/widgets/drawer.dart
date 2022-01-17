@@ -85,6 +85,15 @@ class MaterialDrawer extends StatelessWidget {
                 title: "Posts du TFTT",
                 isSelected: currentPage == "Posts du TFTT" ? true : false),
             DrawerTile(
+                icon: Icons.account_circle,
+                onTap: () {
+                  if (currentPage != "Calculator")
+                    Navigator.pushReplacementNamed(context, '/calculator');
+                },
+                iconColor: Colors.black,
+                title: "Calcul de Points",
+                isSelected: currentPage == "Calculator" ? true : false),
+            DrawerTile(
                 icon: Icons.grain,
                 onTap: () {
                   if (currentPage != "Réservation de tables")

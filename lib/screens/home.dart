@@ -11,20 +11,17 @@ final List<Map<String, String>> homeCards = [
   {
     "id": "1",
     "title": "Équipe Féminine : Nouvel effectif",
-    "image":
-        "https://images.unsplash.com/photo-1539314171919-908b0cd96f03?crop=entropy&w=840&h=840&fit=crop",
+    "image": "assets/img/effectif_feminin.jpg",
   },
   {
     "id": "2",
-    "title": "Match 25 Décembre 19h30",
-    "image":
-        "https://images.unsplash.com/photo-1539314171919-908b0cd96f03?crop=entropy&w=840&h=840&fit=crop",
+    "title": "Metz-Thorigné 25 Décembre 19h30",
+    "image": "assets/img/match.jpg",
   },
   {
     "id": "3",
     "title": "Equipe Féminine : Nouvel effectif",
-    "image":
-        "https://images.unsplash.com/photo-1539314171919-908b0cd96f03?crop=entropy&w=840&h=840&fit=crop",
+    "image": "assets/img/effectif_feminin.jpg",
   }
 ];
 
