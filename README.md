@@ -12,3 +12,7 @@ Cette application devra contenir plusieurs fonctionnalités :
 - Une vue Calculateur de Points où le joueur pourra calculer ces points après un match
 - Une vue Réservation de Tables qui permettra à un utilisateur de réserver une table
 
+
+## Idées
+
+Anniversaires des Licenciés en récupérant les infos du SPID

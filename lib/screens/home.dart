@@ -20,7 +20,22 @@ final List<Map<String, String>> homeCards = [
   },
   {
     "id": "3",
-    "title": "Equipe Féminine : Nouvel effectif",
+    "title": "Tour de N2 Jeunes 29-30 Janvier",
+    "image": "assets/img/effectif_feminin.jpg",
+  },
+  {
+    "id": "4",
+    "title": "Équipe Féminine : Nouvel effectif",
+    "image": "assets/img/effectif_feminin.jpg",
+  },
+  {
+    "id": "5",
+    "title": "Metz-Thorigné 25 Décembre 19h30",
+    "image": "assets/img/match.jpg",
+  },
+  {
+    "id": "6",
+    "title": "Tour de N2 Jeunes 29-30 Janvier",
     "image": "assets/img/effectif_feminin.jpg",
   }
 ];
@@ -34,7 +49,6 @@ class Home extends StatelessWidget {
           title: "Application du TFTT",
         ),
         backgroundColor: MaterialColors.bgColorScreen,
-        // key: _scaffoldKey,
         drawer: MaterialDrawer(currentPage: "Posts du TFTT"),
         body: Container(
           padding: EdgeInsets.only(left: 16.0, right: 16.0),

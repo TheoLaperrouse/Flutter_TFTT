@@ -1,0 +1,16 @@
+name: analyze
+on: push
+jobs:
+  simple-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.5.0'
+          channel: stable 
+      - name: Lint & Analyze
+        run: |
+          flutter pub get
+          flutter format --set-exit-if-changed .
+          flutter analyze

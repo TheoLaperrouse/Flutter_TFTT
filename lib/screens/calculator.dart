@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tftt/constants/Theme.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
-import 'package:flutter_tftt/widgets/input.dart';
-import 'package:flutter_tftt/widgets/card-horizontal.dart';
-import 'package:flutter_tftt/widgets/slider-product.dart';
-import 'package:flutter_tftt/widgets/photo-album.dart';
-import 'package:flutter_tftt/widgets/table-cell.dart';
 
 List<Map<String, double>> ecartPoints = [
   {"ecartMax": 24, "def_nor": -5, "vic_nor": 6, "def_anor": -5, "vic_anor": 6},

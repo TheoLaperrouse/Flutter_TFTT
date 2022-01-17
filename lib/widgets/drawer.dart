@@ -97,7 +97,7 @@ class MaterialDrawer extends StatelessWidget {
                 icon: Icons.grain,
                 onTap: () {
                   if (currentPage != "Réservation de tables")
-                    Navigator.pushReplacementNamed(context, '/components');
+                    Navigator.pushReplacementNamed(context, '/tablebooking');
                 },
                 iconColor: Colors.black,
                 title: "Réservation de tables",

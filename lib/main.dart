@@ -7,6 +7,7 @@ import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/components.dart';
 import 'package:flutter_tftt/screens/onboarding.dart';
 import 'package:flutter_tftt/screens/calculator.dart';
+import 'package:flutter_tftt/screens/tablebooking.dart';
 
 void main() => runApp(MaterialKitPROFlutter());
 
@@ -24,6 +25,7 @@ class MaterialKitPROFlutter extends StatelessWidget {
           "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
           "/settings": (BuildContext context) => new Settings(),
+          "/tablebooking": (BuildContext context) => new TableBooking(),
         });
   }
 }
