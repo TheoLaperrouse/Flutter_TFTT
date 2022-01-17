@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_tftt/constants/Theme.dart';
-
 class TableCellSettings extends StatelessWidget {
   final String title;
   final Function onTap;

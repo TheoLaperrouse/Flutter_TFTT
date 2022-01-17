@@ -16,3 +16,6 @@ Cette application devra contenir plusieurs fonctionnalités :
 ## Idées
 
 Anniversaires des Licenciés en récupérant les infos du SPID
+
+## Librairies
+

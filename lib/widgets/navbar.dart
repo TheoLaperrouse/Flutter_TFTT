@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:flutter_tftt/constants/Theme.dart';
-
-// import 'package:flutter_tftt/screens/categories.dart';
-// import 'package:flutter_tftt/screens/best-deals.dart';
-// import 'package:flutter_tftt/screens/search.dart';
-// import 'package:flutter_tftt/screens/cart.dart';
-// import 'package:flutter_tftt/screens/chat.dart';
-
-import 'package:flutter_tftt/widgets/input.dart';
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -55,8 +45,6 @@ class Navbar extends StatefulWidget implements PreferredSizeWidget {
 
 class _NavbarState extends State<Navbar> {
   String activeTag;
-
-  ItemScrollController _scrollController = ItemScrollController();
 
   void initState() {
     if (widget.tags != null && widget.tags.length != 0) {

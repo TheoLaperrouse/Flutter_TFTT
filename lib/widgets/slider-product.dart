@@ -17,8 +17,6 @@ class ProductCarousel extends StatefulWidget {
 }
 
 class _ProductCarouselState extends State<ProductCarousel> {
-  int _current = 0;
-
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -85,9 +83,7 @@ class _ProductCarouselState extends State<ProductCarousel> {
           initialPage: 0,
           // viewportFraction: 1.0,
           onPageChanged: (index, reason) {
-            setState(() {
-              _current = index;
-            });
+            setState(() {});
           }),
     );
   }
