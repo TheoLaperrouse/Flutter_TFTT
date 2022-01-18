@@ -21,12 +21,12 @@ final List<Map<String, String>> homeCards = [
   {
     "id": "3",
     "title": "Tour de N2 Jeunes 29-30 Janvier",
-    "image": "assets/img/effectif_feminin.jpg",
+    "image": "assets/img/match.jpg",
   },
   {
     "id": "4",
     "title": "Équipe Féminine : Nouvel effectif",
-    "image": "assets/img/effectif_feminin.jpg",
+    "image": "assets/img/match.jpg",
   },
   {
     "id": "5",
@@ -36,7 +36,7 @@ final List<Map<String, String>> homeCards = [
   {
     "id": "6",
     "title": "Tour de N2 Jeunes 29-30 Janvier",
-    "image": "assets/img/effectif_feminin.jpg",
+    "image": "assets/img/match.jpg",
   }
 ];
 

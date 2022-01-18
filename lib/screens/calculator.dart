@@ -5,6 +5,7 @@ import 'package:flutter_tftt/constants/Theme.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 List<Map<String, double>> ecartPoints = [
   {"ecartMax": 24, "def_nor": -5, "vic_nor": 6, "def_anor": -5, "vic_anor": 6},
@@ -75,14 +76,19 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Navbar(
-          title: "Calculateur de Points",
-        ),
-        backgroundColor: MaterialColors.bgColorScreen,
-        drawer: MaterialDrawer(currentPage: "Calculator"),
-        body: SingleChildScrollView(
-            child: Padding(
-          padding: EdgeInsets.only(right: 24, left: 24, bottom: 36),
-        )));
+      appBar: Navbar(
+        title: "Calculateur de Points",
+      ),
+      backgroundColor: MaterialColors.bgColorScreen,
+      drawer: MaterialDrawer(currentPage: "Calculator"),
+      body: Container(
+          child: WebView(
+        initialUrl: Uri.dataFromString(
+                '<html><body><iframe loading="lazy" src="https://www.pongiste.fr/include/pages/calculateur_points.php" width="100%" height="405px" scrolling="no" frameborder="0"></iframe></body></html>',
+                mimeType: 'text/html')
+            .toString(),
+        javascriptMode: JavascriptMode.unrestricted,
+      )),
+    );
   }
 }

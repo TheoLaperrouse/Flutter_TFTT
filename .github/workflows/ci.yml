@@ -1,7 +1,7 @@
 name: analyze
 on: push
 jobs:
-  simple-jobs:
+  analyze-jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

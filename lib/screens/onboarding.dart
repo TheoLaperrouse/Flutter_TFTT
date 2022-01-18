@@ -47,7 +47,7 @@ class Onboarding extends StatelessWidget {
                     width: double.infinity,
                     child: TextButton(
                       style: TextButton.styleFrom(
-                          primary: MaterialColors.info,
+                          backgroundColor: MaterialColors.info,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4.0),
                           )),
