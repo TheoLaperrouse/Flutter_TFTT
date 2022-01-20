@@ -25,7 +25,7 @@ class DrawerTile extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             margin: EdgeInsets.only(bottom: 6),
             decoration: BoxDecoration(
-                color: isSelected ? MaterialColors.active : Colors.transparent,
+                color: isSelected ? MaterialColors.drawer : Colors.transparent,
                 borderRadius: BorderRadius.all(Radius.circular(4))),
             child: Row(
               children: [

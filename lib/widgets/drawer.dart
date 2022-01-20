@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter_tftt/constants/Theme.dart';
@@ -16,7 +17,7 @@ class MaterialDrawer extends StatelessWidget {
       child: Container(
           child: Column(children: [
         DrawerHeader(
-            decoration: BoxDecoration(color: MaterialColors.drawerHeader),
+            decoration: BoxDecoration(color: MaterialColors.drawer),
             child: Container(
                 // padding: EdgeInsets.symmetric(horizontal: 28.0),
                 child: Column(
@@ -24,12 +25,11 @@ class MaterialDrawer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://images.unsplash.com/photo-1512529920731-e8abaea917a5?fit=crop&w=840&q=80"),
+                  backgroundImage: AssetImage("assets/img/logo-tftt.jpg"),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0, top: 16.0),
-                  child: Text("Rachel Brown",
+                  child: Text("Théo Laperrouse",
                       style: TextStyle(color: Colors.white, fontSize: 21)),
                 ),
                 Padding(
@@ -43,13 +43,15 @@ class MaterialDrawer extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
                                 color: MaterialColors.label),
-                            child: Text("Pro",
+                            child: Text("R3",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 16))),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 16.0),
-                        child: Text("Seller",
+                        child: Text(
+                            Settings.getValue<String>(
+                                'profileType', 'Entraineur'),
                             style: TextStyle(
                                 color: MaterialColors.muted, fontSize: 16)),
                       ),
@@ -57,12 +59,12 @@ class MaterialDrawer extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
-                            child: Text("4.8",
+                            child: Text("1389",
                                 style: TextStyle(
                                     color: MaterialColors.warning,
                                     fontSize: 16)),
                           ),
-                          Icon(Icons.star_border,
+                          Icon(Icons.leaderboard_outlined,
                               color: MaterialColors.warning, size: 20)
                         ],
                       )
@@ -87,6 +89,15 @@ class MaterialDrawer extends StatelessWidget {
             DrawerTile(
                 icon: Icons.account_circle,
                 onTap: () {
+                  if (currentPage != "Mon profil")
+                    Navigator.pushReplacementNamed(context, '/profile');
+                },
+                iconColor: Colors.black,
+                title: "Mon profil",
+                isSelected: currentPage == "Mon profil" ? true : false),
+            DrawerTile(
+                icon: Icons.table_view,
+                onTap: () {
                   if (currentPage != "Calculator")
                     Navigator.pushReplacementNamed(context, '/calculator');
                 },
@@ -94,7 +105,16 @@ class MaterialDrawer extends StatelessWidget {
                 title: "Calcul de Points",
                 isSelected: currentPage == "Calculator" ? true : false),
             DrawerTile(
-                icon: Icons.grain,
+                icon: Icons.group,
+                onTap: () {
+                  if (currentPage != "Les Équipes")
+                    Navigator.pushReplacementNamed(context, '/teams');
+                },
+                iconColor: Colors.black,
+                title: "Les Équipes",
+                isSelected: currentPage == "Les Équipes" ? true : false),
+            DrawerTile(
+                icon: Icons.book_online_outlined,
                 onTap: () {
                   if (currentPage != "Réservation de tables")
                     Navigator.pushReplacementNamed(context, '/tablebooking');
@@ -103,15 +123,6 @@ class MaterialDrawer extends StatelessWidget {
                 title: "Réservation de tables",
                 isSelected:
                     currentPage == "Réservation de tables" ? true : false),
-            DrawerTile(
-                icon: Icons.account_circle,
-                onTap: () {
-                  if (currentPage != "Mon profil")
-                    Navigator.pushReplacementNamed(context, '/profile');
-                },
-                iconColor: Colors.black,
-                title: "Mon profil",
-                isSelected: currentPage == "Mon profil" ? true : false),
             DrawerTile(
                 icon: Icons.settings,
                 onTap: () {

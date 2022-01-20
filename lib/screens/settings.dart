@@ -1,29 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 import 'package:flutter_tftt/constants/Theme.dart';
 
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
-import 'package:flutter_tftt/widgets/table-cell.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 
-class Settings extends StatefulWidget {
+class SettingsPage extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _SettingsPageState createState() => _SettingsPageState();
 }
 
-class _SettingsState extends State<Settings> {
-  bool switchValueOne;
-  bool switchValueTwo;
-
-  void initState() {
-    setState(() {
-      switchValueOne = true;
-      switchValueTwo = false;
-    });
-    super.initState();
-  }
-
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,71 +22,26 @@ class _SettingsState extends State<Settings> {
         drawer: MaterialDrawer(currentPage: "Paramètres"),
         backgroundColor: MaterialColors.bgColorScreen,
         body: Container(
-            child: SingleChildScrollView(
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
-            child: Column(
-              children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text("Paramètres de profil",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18)),
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text("These are the most important settings",
-                        style: TextStyle(
-                            color: MaterialColors.caption, fontSize: 14)),
-                  ),
-                ),
-                TableCellSettings(
-                    title: "Notifications",
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/pro');
-                    }),
-                SizedBox(height: 36.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: Text("Privacy Settings",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18)),
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Text("Third most important settings",
-                        style: TextStyle(color: MaterialColors.caption)),
-                  ),
-                ),
-                TableCellSettings(
-                    title: "User Agreement",
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/pro');
-                    }),
-                TableCellSettings(
-                    title: "Privacy",
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/pro');
-                    }),
-                TableCellSettings(
-                    title: "About",
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, '/pro');
-                    }),
-              ],
+            child: SettingsGroup(
+          title: 'Paramètres Utilisateur',
+          children: <Widget>[
+            RadioSettingsTile<String>(
+              title: 'Type de Profil',
+              settingKey: 'profileType',
+              values: <String, String>{
+                'joueur': 'Joueur',
+                'entraineur': 'Entraineur',
+                'bureau': 'Bureau',
+              },
+              selected: 'player',
             ),
-          ),
+            TextInputSettingsTile(
+              title: 'Numéro De Licence',
+              settingKey: 'numLicence',
+              initialValue: '0',
+              borderColor: Colors.blueAccent,
+            )
+          ],
         )));
   }
 }

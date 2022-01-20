@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void _launchLink() async {
+  const url = 'https://ker-crea.fr/168-tftt';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw "Impossible de lancer le lien.";
+  }
+}
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -56,7 +66,7 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 90,
+        height: 50,
         decoration: BoxDecoration(
             color: !widget.transparent ? widget.bgColor : Colors.transparent,
             boxShadow: [
@@ -116,29 +126,7 @@ class _NavbarState extends State<Navbar> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => Chat()));
-                            },
-                            child: IconButton(
-                                icon: Icon(Icons.chat_bubble_outline,
-                                    color: !widget.transparent
-                                        ? (widget.bgColor == Colors.white
-                                            ? Colors.black
-                                            : Colors.white)
-                                        : Colors.white,
-                                    size: 22.0),
-                                onPressed: null),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => Cart()));
-                            },
+                            onTap: _launchLink,
                             child: IconButton(
                                 icon: Icon(Icons.add_shopping_cart,
                                     color: !widget.transparent
