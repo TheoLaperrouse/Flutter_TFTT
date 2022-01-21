@@ -40,7 +40,17 @@ flutter run
 - flutter_settings_screens: ^0.2.2+1 
 - http: ^0.13.4
 
+À ajouter :
+
+- flutter_lints: 
+
 ## À faire
+
+- Compos d'équipes
+- Place dématérialisée match de Pro
+- Commande matériel
+- Réservation de séance Indiv
+- Planning
 
 ## Idées
 

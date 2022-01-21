@@ -6,7 +6,6 @@ import 'package:flutter_tftt/models/post.dart';
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_tftt/utils/link.dart';
 
 class Home extends StatefulWidget {
