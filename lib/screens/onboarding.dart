@@ -33,6 +33,10 @@ class Onboarding extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 58),
                       )),
                     ),
+                    SizedBox(
+                      width: 100,
+                      height: 40,
+                    )
                   ],
                 ),
                 Padding(

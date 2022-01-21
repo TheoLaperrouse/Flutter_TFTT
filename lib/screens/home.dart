@@ -1,47 +1,32 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tftt/constants/Theme.dart';
-
+import 'package:flutter_tftt/models/post.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_tftt/utils/link.dart';
 
-final List<Map<String, String>> homeCards = [
-  {
-    "id": "1",
-    "title": "Équipe Féminine : Nouvel effectif",
-    "image": "assets/img/effectif_feminin.jpg",
-  },
-  {
-    "id": "2",
-    "title": "Metz-Thorigné 25 Décembre 19h30",
-    "image": "assets/img/match.jpg",
-  },
-  {
-    "id": "3",
-    "title": "Tour de N2 Jeunes 29-30 Janvier",
-    "image": "assets/img/match.jpg",
-  },
-  {
-    "id": "4",
-    "title": "Équipe Féminine : Nouvel effectif",
-    "image": "assets/img/match.jpg",
-  },
-  {
-    "id": "5",
-    "title": "Metz-Thorigné 25 Décembre 19h30",
-    "image": "assets/img/match.jpg",
-  },
-  {
-    "id": "6",
-    "title": "Tour de N2 Jeunes 29-30 Janvier",
-    "image": "assets/img/match.jpg",
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List<Post> posts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchPosts().then((result) {
+      setState(() {
+        posts = result;
+      });
+    });
   }
-];
 
-class Home extends StatelessWidget {
-  // final GlobalKey _scaffoldKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,25 +36,24 @@ class Home extends StatelessWidget {
         backgroundColor: MaterialColors.bgColorScreen,
         drawer: MaterialDrawer(currentPage: "Posts du TFTT"),
         body: Container(
-          padding: EdgeInsets.only(left: 16.0, right: 16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: new List.generate(
-                homeCards.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: CardHorizontal(
-                      cta: "Voir l'article",
-                      title: homeCards[index]["title"],
-                      img: homeCards[index]['image'],
-                      tap: () {
-                        Navigator.pushReplacementNamed(
-                            context, "/post/${homeCards[index]['image']}");
-                      }),
-                ),
-              ),
-            ),
-          ),
-        ));
+            padding: EdgeInsets.only(left: 16.0, right: 16.0),
+            child: posts.length > 0
+                ? SingleChildScrollView(
+                    child: Column(
+                    children: new List.generate(
+                      posts.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: CardHorizontal(
+                            cta: "Voir l'article",
+                            title: posts[index].title,
+                            img: 'assets/img/match.jpg',
+                            tap: () {
+                              UtilsFunction.launchLink(posts[index].link);
+                            }),
+                      ),
+                    ),
+                  ))
+                : Center(child: CircularProgressIndicator())));
   }
 }

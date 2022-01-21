@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-void _launchLink() async {
-  const url = 'https://ker-crea.fr/168-tftt';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw "Impossible de lancer le lien.";
-  }
-}
+import 'package:flutter_tftt/utils/link.dart';
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -126,7 +117,10 @@ class _NavbarState extends State<Navbar> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
-                            onTap: _launchLink,
+                            onTap: () {
+                              UtilsFunction.launchLink(
+                                  'https://ker-crea.fr/168-tftt');
+                            },
                             child: IconButton(
                                 icon: Icon(Icons.add_shopping_cart,
                                     color: !widget.transparent

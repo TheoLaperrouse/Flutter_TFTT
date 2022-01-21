@@ -31,6 +31,17 @@ flutter run
 
 ## Librairies
 
+- scrollable_positioned_list: ^0.1.7
+- carousel_slider: ^2.2.1
+- font_awesome_flutter: ^8.8.1
+- table_calendar: ^3.0.3
+- webview_flutter: ^3.0.0
+- url_launcher: ^5.2.7
+- flutter_settings_screens: ^0.2.2+1 
+- http: ^0.13.4
+
+## À faire
+
 ## Idées
 
 - Anniversaires des Licenciés en récupérant les infos du SPID
