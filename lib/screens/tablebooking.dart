@@ -13,14 +13,11 @@ class TableBooking extends StatefulWidget {
 }
 
 class _SettingsState extends State<TableBooking> {
-  bool switchValueOne;
-  bool switchValueTwo;
-
+  CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
+  DateTime _focusedDay = DateTime.now();
+  DateTime _selectedDay = DateTime.now();
   void initState() {
-    setState(() {
-      switchValueOne = true;
-      switchValueTwo = false;
-    });
+    setState(() {});
     super.initState();
   }
 
@@ -33,10 +30,25 @@ class _SettingsState extends State<TableBooking> {
         drawer: MaterialDrawer(currentPage: "Réservation de tables"),
         backgroundColor: MaterialColors.bgColorScreen,
         body: Container(
-            child: TableCalendar(
-          firstDay: DateTime.utc(2010, 10, 16),
-          lastDay: DateTime.utc(2030, 3, 14),
-          focusedDay: DateTime.now(),
-        )));
+            child: Column(children: [
+          SizedBox(
+            width: 100,
+            height: 40,
+          ),
+          TableCalendar(
+              calendarFormat: _calendarFormat,
+              locale: 'fr_FR',
+              firstDay: DateTime.utc(2010, 10, 16),
+              lastDay: DateTime.utc(2030, 3, 14),
+              focusedDay: _focusedDay,
+              selectedDayPredicate: (day) {
+                return isSameDay(_selectedDay, day);
+              },
+              onPageChanged: (focusedDay) {
+                _focusedDay = focusedDay;
+              },
+              rowHeight: 70,
+              headerVisible: false)
+        ])));
   }
 }

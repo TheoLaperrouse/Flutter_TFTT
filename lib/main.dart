@@ -9,10 +9,13 @@ import 'package:flutter_tftt/screens/onboarding.dart';
 import 'package:flutter_tftt/screens/calculator.dart';
 import 'package:flutter_tftt/screens/tablebooking.dart';
 import 'package:flutter_tftt/screens/teams.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() => initSettings().then((_) {
-      runApp(ApplicationTFTT());
-    });
+Future<void> main() async {
+  await initializeDateFormatting();
+  await initSettings();
+  runApp(ApplicationTFTT());
+}
 
 Future<void> initSettings() async {
   await Settings.init(
