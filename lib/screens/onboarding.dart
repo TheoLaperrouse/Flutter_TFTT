@@ -39,12 +39,6 @@ class Onboarding extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 42.0),
-                  child: Row(children: <Widget>[
-                    Image.asset("assets/img/logo-android.png", scale: 2.6)
-                  ]),
-                ),
-                Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: SizedBox(
                     width: double.infinity,
