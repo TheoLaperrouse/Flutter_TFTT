@@ -4,6 +4,16 @@
 
 Application pour le club de Tennis de table de Thorigné Fouillard développé en Flutter à l'aide de FireBase
 
+## Mise en place environnement Dev
+
+Installer lefthook et exécuter cette ligne de commande :
+```
+lefthook install
+```
+
+LeftHook permet d'exécuter des commandes avant les commandes (comme husky pour JS).
+Ici, commande pour analiser et lint le code avant un commit (voir lefthook.yml)
+
 ## Fonctionnalités Principales
 
 Cette application devra contenir plusieurs fonctionnalités :
