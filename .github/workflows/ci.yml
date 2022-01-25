@@ -22,7 +22,7 @@ jobs:
       - name: Install and set Flutter version
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.8.0'
+          flutter-version: '2.5.0'
 
       - name: Create the Keystore
         env:
@@ -34,7 +34,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Android App Bundle
-        run: flutter build appbundle
+        run: flutter build appbundle --release
 
       - name: Sign Android App Bundle
         run: jarsigner -keystore $RUNNER_TEMP/my_production.keystore -storepass ${{ secrets.KEYSTORE_PASSWORD }} -keypass ${{ secrets.KEYSTORE_PASSWORD }} -sigalg SHA256withRSA -digestalg SHA-256 -signedjar build/app/outputs/bundle/release/app-release-signed.aab build/app/outputs/bundle/release/*.aab my_production_alias
