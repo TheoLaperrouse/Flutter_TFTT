@@ -31,7 +31,8 @@
 .pub/
 /build/
 /web
-# Web related
+/test
+# Web related example
 lib/generated_plugin_registrant.dart
 
 # Symbolication related

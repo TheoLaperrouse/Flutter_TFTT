@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 import 'package:flutter_tftt/constants/Theme.dart';
+import 'package:flutter_tftt/screens/settings/account_page.dart';
+import 'package:flutter_tftt/widgets/icon_widget.dart';
 
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
@@ -21,27 +23,28 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         drawer: MaterialDrawer(currentPage: "Paramètres"),
         backgroundColor: MaterialColors.bgColorScreen,
-        body: Container(
-            child: SettingsGroup(
-          title: 'Paramètres Utilisateur',
-          children: <Widget>[
-            RadioSettingsTile<String>(
-              title: 'Type de Profil',
-              settingKey: 'profileType',
-              values: <String, String>{
-                'joueur': 'Joueur',
-                'entraineur': 'Entraineur',
-                'bureau': 'Bureau',
-              },
-              selected: 'player',
-            ),
-            TextInputSettingsTile(
-              title: 'Numéro De Licence',
-              settingKey: 'numLicence',
-              initialValue: '0',
-              borderColor: Colors.blueAccent,
-            )
-          ],
-        )));
+        body: ListView(padding: EdgeInsets.all(8), children: [
+          AccountPage(),
+          SettingsGroup(
+            title: 'Notification',
+            subtitle: "",
+            children: <Widget>[buildNotification()],
+          ),
+        ]));
   }
 }
+
+Widget buildNotification() => SimpleSettingsTile(
+      title: 'Type de Profil',
+      subtitle: "",
+      leading: IconWidget(
+        icon: Icons.notifications,
+        color: Colors.blue,
+      ),
+    );
+
+Widget buildLicenceNum() => TextInputSettingsTile(
+      title: 'Numéro De Licence',
+      settingKey: 'numLicence',
+      initialValue: '0',
+    );

@@ -57,87 +57,85 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 50,
-        decoration: BoxDecoration(
-            color: !widget.transparent ? widget.bgColor : Colors.transparent,
-            boxShadow: [
-              BoxShadow(
-                  color: !widget.transparent && !widget.noShadow
-                      ? Colors.black.withOpacity(0.6)
-                      : Colors.transparent,
-                  spreadRadius: -10,
-                  blurRadius: 12,
-                  offset: Offset(0, 5))
-            ]),
-        child: SafeArea(
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-            child: Column(
+      height: 82,
+      decoration: BoxDecoration(
+          color: !widget.transparent ? widget.bgColor : Colors.transparent,
+          boxShadow: [
+            BoxShadow(
+                color: !widget.transparent && !widget.noShadow
+                    ? Colors.black.withOpacity(0.6)
+                    : Colors.transparent,
+                spreadRadius: -10,
+                blurRadius: 12,
+                offset: Offset(0, 5))
+          ]),
+      child: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            icon: Icon(
-                                !widget.backButton
-                                    ? Icons.menu
-                                    : Icons.arrow_back_ios,
+                    IconButton(
+                        icon: Icon(
+                            !widget.backButton
+                                ? Icons.menu
+                                : Icons.arrow_back_ios,
+                            color: !widget.transparent
+                                ? (widget.bgColor == Colors.white
+                                    ? Colors.black
+                                    : Colors.white)
+                                : Colors.white,
+                            size: 24.0),
+                        onPressed: () {
+                          if (!widget.backButton)
+                            Scaffold.of(context).openDrawer();
+                          else
+                            Navigator.pop(context);
+                        }),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(widget.title,
+                          style: TextStyle(
+                              color: !widget.transparent
+                                  ? (widget.bgColor == Colors.white
+                                      ? Colors.black
+                                      : Colors.white)
+                                  : Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18.0)),
+                    ),
+                  ],
+                ),
+                if (widget.rightOptions)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          UtilsFunction.launchLink(
+                              'https://ker-crea.fr/168-tftt');
+                        },
+                        child: IconButton(
+                            icon: Icon(Icons.add_shopping_cart,
                                 color: !widget.transparent
                                     ? (widget.bgColor == Colors.white
                                         ? Colors.black
                                         : Colors.white)
                                     : Colors.white,
-                                size: 24.0),
-                            onPressed: () {
-                              if (!widget.backButton)
-                                Scaffold.of(context).openDrawer();
-                              else
-                                Navigator.pop(context);
-                            }),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Text(widget.title,
-                              style: TextStyle(
-                                  color: !widget.transparent
-                                      ? (widget.bgColor == Colors.white
-                                          ? Colors.black
-                                          : Colors.white)
-                                      : Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18.0)),
-                        ),
-                      ],
-                    ),
-                    if (widget.rightOptions)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              UtilsFunction.launchLink(
-                                  'https://ker-crea.fr/168-tftt');
-                            },
-                            child: IconButton(
-                                icon: Icon(Icons.add_shopping_cart,
-                                    color: !widget.transparent
-                                        ? (widget.bgColor == Colors.white
-                                            ? Colors.black
-                                            : Colors.white)
-                                        : Colors.white,
-                                    size: 22.0),
-                                onPressed: null),
-                          ),
-                        ],
-                      )
-                  ],
-                ),
+                                size: 22.0),
+                            onPressed: null),
+                      ),
+                    ],
+                  )
               ],
             ),
-          ),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }
