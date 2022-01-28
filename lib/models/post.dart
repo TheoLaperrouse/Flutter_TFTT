@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -20,10 +21,10 @@ Future<List<Post>> fetchPosts() async {
 
 class Post {
   Post({
-    this.id,
-    this.date,
-    this.link,
-    this.title,
+    @required this.id,
+    @required this.date,
+    @required this.link,
+    @required this.title,
   });
 
   int id;

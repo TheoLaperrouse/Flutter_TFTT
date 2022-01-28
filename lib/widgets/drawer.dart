@@ -124,6 +124,15 @@ class MaterialDrawer extends StatelessWidget {
                 isSelected:
                     currentPage == "Réservation de tables" ? true : false),
             DrawerTile(
+                icon: Icons.book_online_outlined,
+                onTap: () {
+                  if (currentPage != "Album Photo")
+                    Navigator.pushReplacementNamed(context, '/picturealbum');
+                },
+                iconColor: Colors.black,
+                title: "Album Photo",
+                isSelected: currentPage == "Album Photo" ? true : false),
+            DrawerTile(
                 icon: Icons.settings,
                 onTap: () {
                   if (currentPage != "Paramètres")

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/utils/link.dart';
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
@@ -110,27 +111,46 @@ class _NavbarState extends State<Navbar> {
                     ),
                   ],
                 ),
-                if (widget.rightOptions)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          UtilsFunction.launchLink(
-                              'https://ker-crea.fr/168-tftt');
-                        },
-                        child: IconButton(
-                            icon: Icon(Icons.add_shopping_cart,
-                                color: !widget.transparent
-                                    ? (widget.bgColor == Colors.white
-                                        ? Colors.black
-                                        : Colors.white)
-                                    : Colors.white,
-                                size: 22.0),
-                            onPressed: null),
-                      ),
-                    ],
-                  )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        UtilsFunction.launchLink(
+                            'https://www.instagram.com/thorignett/');
+                      },
+                      child: IconButton(
+                          icon: Icon(Icons.photo_camera,
+                              color: Colors.black, size: 22.0),
+                          onPressed: null),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        UtilsFunction.launchLink(
+                            'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468');
+                      },
+                      child: IconButton(
+                          icon: Icon(Icons.facebook,
+                              color: MaterialColors.socialFacebook, size: 22.0),
+                          onPressed: null),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        UtilsFunction.launchLink(
+                            'https://ker-crea.fr/168-tftt');
+                      },
+                      child: IconButton(
+                          icon: Icon(Icons.add_shopping_cart,
+                              color: !widget.transparent
+                                  ? (widget.bgColor == Colors.white
+                                      ? Colors.black
+                                      : Colors.white)
+                                  : Colors.white,
+                              size: 22.0),
+                          onPressed: null),
+                    ),
+                  ],
+                )
               ],
             ),
           ],

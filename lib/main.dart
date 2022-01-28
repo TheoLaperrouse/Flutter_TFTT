@@ -3,6 +3,7 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 // screens
 import 'package:flutter_tftt/screens/home.dart';
+import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/calculator.dart';
@@ -36,6 +37,7 @@ class ApplicationTFTT extends StatelessWidget {
           "/settings": (BuildContext context) => new SettingsPage(),
           "/tablebooking": (BuildContext context) => new TableBooking(),
           "/teams": (BuildContext context) => new Teams(),
+          "/picturealbum": (BuildContext context) => new PictureAlbum(),
         });
   }
 }
