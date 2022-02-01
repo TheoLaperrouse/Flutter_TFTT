@@ -43,11 +43,11 @@ class CardHorizontal extends StatelessWidget {
                             Text(title,
                                 style: TextStyle(
                                     color: MaterialColors.caption,
-                                    fontSize: 13)),
+                                    fontSize: 16)),
                             Text(cta,
                                 style: TextStyle(
-                                    color: MaterialColors.muted,
-                                    fontSize: 11,
+                                    color: Colors.blueGrey,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w600))
                           ],
                         ),

@@ -124,6 +124,17 @@ class Profile extends StatelessWidget {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text("2",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text("Défaites",
+                                style: TextStyle(color: MaterialColors.muted))
+                          ],
+                        )
                       ],
                     ),
                   )),
