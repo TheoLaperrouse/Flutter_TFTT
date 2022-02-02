@@ -115,8 +115,8 @@ class _NavbarState extends State<Navbar> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        UtilsFunction.launchLink(
+                      onTap: () async {
+                        await UtilsFunction.launchLink(
                             'https://www.instagram.com/thorignett/');
                       },
                       child: IconButton(
@@ -125,8 +125,8 @@ class _NavbarState extends State<Navbar> {
                           onPressed: null),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        UtilsFunction.launchLink(
+                      onTap: () async {
+                        await UtilsFunction.launchLink(
                             'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468');
                       },
                       child: IconButton(
@@ -135,8 +135,8 @@ class _NavbarState extends State<Navbar> {
                           onPressed: null),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        UtilsFunction.launchLink(
+                      onTap: () async {
+                        await UtilsFunction.launchLink(
                             'https://ker-crea.fr/168-tftt');
                       },
                       child: IconButton(

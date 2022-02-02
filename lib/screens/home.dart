@@ -47,8 +47,8 @@ class _HomeState extends State<Home> {
                             cta: "Voir l'article",
                             title: posts[index].title,
                             img: 'assets/img/match.jpg',
-                            tap: () {
-                              UtilsFunction.launchLink(posts[index].link);
+                            tap: () async {
+                              await UtilsFunction.launchLink(posts[index].link);
                             }),
                       ),
                     ),
