@@ -31,7 +31,7 @@ flutter analyze
 
 Build de l'application :
 ```sh
-flutter create .
+flutter create . 
 ```
 
 Lance l'application en vue Web :
@@ -67,4 +67,3 @@ flutter run
 - Anniversaires des Licenciés en récupérant les infos du SPID
 - Back qui appelle l'API de la Fédé pour récupération des derniers matchs
 - Ajout du classement de la ProB 
-

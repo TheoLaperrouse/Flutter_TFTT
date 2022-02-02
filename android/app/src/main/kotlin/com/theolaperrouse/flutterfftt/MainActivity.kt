@@ -1,4 +1,4 @@
-package com.theolaperrouse.flutter_tftt
+package com.theolaperrouse.flutterfftt
 
 import io.flutter.embedding.android.FlutterActivity
 
