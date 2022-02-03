@@ -124,7 +124,7 @@ class MaterialDrawer extends StatelessWidget {
                 isSelected:
                     currentPage == "Réservation de tables" ? true : false),
             DrawerTile(
-                icon: Icons.book_online_outlined,
+                icon: Icons.photo_camera,
                 onTap: () {
                   if (currentPage != "Album Photo")
                     Navigator.pushReplacementNamed(context, '/picturealbum');
