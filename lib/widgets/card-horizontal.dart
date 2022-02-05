@@ -13,9 +13,7 @@ class CardHorizontal extends StatelessWidget {
   final Function tap;
   final String title;
 
-  static void defaultFunc() {
-    print("the function works!");
-  }
+  static void defaultFunc() {}
 
   @override
   Widget build(BuildContext context) {

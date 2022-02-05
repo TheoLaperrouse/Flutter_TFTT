@@ -31,6 +31,7 @@
 .pub/
 /build/
 /web
+/windows
 /test
 # Web related example
 lib/generated_plugin_registrant.dart

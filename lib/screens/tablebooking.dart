@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/event.dart';
+//widgets
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 import 'package:flutter_tftt/widgets/navbar.dart';
@@ -125,9 +126,14 @@ class _TableBookingState extends State<TableBooking> {
           context: context,
           builder: (context) => AlertDialog(
             title: Text("Réserver une table"),
-            content: TextFormField(
-              controller: _eventController,
-            ),
+            content: Column(children: [
+              TextFormField(
+                controller: _eventController,
+              ),
+              TextFormField(
+                controller: _eventController,
+              ),
+            ]),
             actions: [
               TextButton(
                 child: Text("Annuler"),
