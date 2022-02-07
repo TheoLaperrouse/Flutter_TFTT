@@ -6,7 +6,6 @@ import 'package:flutter_tftt/screens/home.dart';
 import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
-import 'package:flutter_tftt/screens/calculator.dart';
 import 'package:flutter_tftt/screens/tablebooking.dart';
 import 'package:flutter_tftt/screens/teams.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -32,7 +31,7 @@ class ApplicationTFTT extends StatelessWidget {
         initialRoute: "/home",
         routes: <String, WidgetBuilder>{
           "/home": (BuildContext context) => new Home(),
-          "/calculator": (BuildContext context) => new Calculator(),
+          // "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
           "/settings": (BuildContext context) => new SettingsPage(),
           "/tablebooking": (BuildContext context) => new TableBooking(),

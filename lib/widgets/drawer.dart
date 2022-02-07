@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 //widgets
 import 'package:flutter_tftt/widgets/drawer-header.dart';
 import 'package:flutter_tftt/widgets/drawer-tile.dart';
@@ -36,15 +37,15 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Mon profil",
                 isSelected: currentPage == "Mon profil" ? true : false),
-            DrawerTile(
-                icon: Icons.table_view,
-                onTap: () {
-                  if (currentPage != "Calculator")
-                    Navigator.pushReplacementNamed(context, '/calculator');
-                },
-                iconColor: Colors.black,
-                title: "Calcul de Points",
-                isSelected: currentPage == "Calculator" ? true : false),
+            // DrawerTile(
+            //     icon: Icons.table_view,
+            //     onTap: () {
+            //       if (currentPage != "Calculator")
+            //         Navigator.pushReplacementNamed(context, '/calculator');
+            //     },
+            //     iconColor: Colors.black,
+            //     title: "Calcul de Points",
+            //     isSelected: currentPage == "Calculator" ? true : false),
             DrawerTile(
                 icon: Icons.group,
                 onTap: () {
@@ -54,16 +55,18 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Les Équipes",
                 isSelected: currentPage == "Les Équipes" ? true : false),
-            DrawerTile(
-                icon: Icons.book_online_outlined,
-                onTap: () {
-                  if (currentPage != "Réservation de tables")
-                    Navigator.pushReplacementNamed(context, '/tablebooking');
-                },
-                iconColor: Colors.black,
-                title: "Réservation de tables",
-                isSelected:
-                    currentPage == "Réservation de tables" ? true : false),
+            if (Settings.getValue<String>('profileType', 'Joueur') !=
+                "entraineur")
+              DrawerTile(
+                  icon: Icons.book_online_outlined,
+                  onTap: () {
+                    if (currentPage != "Réservation de tables")
+                      Navigator.pushReplacementNamed(context, '/tablebooking');
+                  },
+                  iconColor: Colors.black,
+                  title: "Réservation de tables",
+                  isSelected:
+                      currentPage == "Réservation de tables" ? true : false),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {
