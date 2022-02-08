@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
+import 'package:flutter_tftt/utils/settings_key.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
@@ -19,18 +20,12 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       drawer: MaterialDrawer(currentPage: "Paramètres"),
       backgroundColor: MaterialColors.bgColorScreen,
-      body: SafeArea(
-        child: ListView(
-          children: [
-            SettingsGroup(title: "Paramètres utilisateur", children: [
-              buildProfileType(),
-              buildLicenceNum(),
-              buildTeam(),
-              buildNotification()
-            ]),
-          ],
-        ),
-      ),
+      body: SettingsGroup(title: "Paramètres utilisateur", children: [
+        buildProfileType(),
+        buildLicenceNum(),
+        buildTeam(),
+        buildNotification()
+      ]),
     );
   }
 }
@@ -38,11 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
 Widget buildProfileType() => DropDownSettingsTile<String>(
       title: 'Type de Profil',
       settingKey: 'profileType',
-      values: <String, String>{
-        'joueur': 'Joueur',
-        'entraineur': 'Entraîneur',
-        'bureau': 'Bureau',
-      },
+      values: SettingsKey.profileType,
       selected: 'joueur',
     );
 

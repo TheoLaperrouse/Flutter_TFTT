@@ -11,7 +11,6 @@ class Profile extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: Navbar(
           title: "Mon Profil",
-          transparent: true,
         ),
         backgroundColor: MaterialColors.bgColorScreen,
         drawer: MaterialDrawer(currentPage: "Mon Profil"),

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.theolaperrouse.flutterfftt">
    <application
-        android:label="flutter_tftt"
+        android:label="TFTT"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
