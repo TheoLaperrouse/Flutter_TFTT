@@ -17,8 +17,21 @@ class _TableBookingState extends State<TableBooking> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+  TimeOfDay startDate = TimeOfDay.now();
+  TimeOfDay endDate;
 
-  TextEditingController _eventController = TextEditingController();
+  void _selectTime() async {
+    final TimeOfDay newTime = await showTimePicker(
+      context: context,
+      initialTime: startDate,
+      initialEntryMode: TimePickerEntryMode.input,
+    );
+    if (newTime != null) {
+      setState(() {
+        startDate = newTime;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -28,12 +41,6 @@ class _TableBookingState extends State<TableBooking> {
 
   List<Event> _getEventsfromDay(DateTime date) {
     return selectedEvents[date] ?? [];
-  }
-
-  @override
-  void dispose() {
-    _eventController.dispose();
-    super.dispose();
   }
 
   @override
@@ -127,11 +134,13 @@ class _TableBookingState extends State<TableBooking> {
           builder: (context) => AlertDialog(
             title: Text("Réserver une table"),
             content: Column(children: [
-              TextFormField(
-                controller: _eventController,
+              ElevatedButton(
+                onPressed: _selectTime,
+                child: Text("Choisir l'heure du début de la séance"),
               ),
-              TextFormField(
-                controller: _eventController,
+              SizedBox(height: 8),
+              Text(
+                'Début : ${startDate.format(context)}',
               ),
             ]),
             actions: [
@@ -142,20 +151,18 @@ class _TableBookingState extends State<TableBooking> {
               TextButton(
                 child: Text("Valider"),
                 onPressed: () {
-                  if (_eventController.text.isEmpty) {
+                  endDate = TimeOfDay(
+                      hour: startDate.hour + 1, minute: startDate.minute);
+                  var event = Event(
+                      title:
+                          'Réservation Table : \n ${startDate.format(context)} - ${endDate.format(context)}');
+                  if (selectedEvents[selectedDay] != null) {
+                    selectedEvents[selectedDay].add(event);
                   } else {
-                    if (selectedEvents[selectedDay] != null) {
-                      selectedEvents[selectedDay].add(
-                        Event(title: _eventController.text),
-                      );
-                    } else {
-                      selectedEvents[selectedDay] = [
-                        Event(title: _eventController.text)
-                      ];
-                    }
+                    selectedEvents[selectedDay] = [event];
                   }
+
                   Navigator.pop(context);
-                  _eventController.clear();
                   setState(() {});
                   return;
                 },

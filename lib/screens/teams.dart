@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
+import 'package:flutter_tftt/models/team.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
@@ -10,9 +11,19 @@ class Teams extends StatefulWidget {
   _TeamsState createState() => _TeamsState();
 }
 
-List<String> teams = ['PROB', 'N2', 'N3', 'PN', 'R1', 'R2', 'R3'];
-
 class _TeamsState extends State<Teams> {
+  List<String> teams = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchTeams("03350060").then((result) {
+      setState(() {
+        teams = result.map((team) => team.nomEquipe).toList();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

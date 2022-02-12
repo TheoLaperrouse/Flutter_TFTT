@@ -14,7 +14,7 @@ class MaterialDrawer extends StatelessWidget {
     return Drawer(
       child: Container(
           child: Column(children: [
-        ProfileHeader(),
+        DrawerHeaderWidget(),
         Expanded(
             child: ListView(
           padding: EdgeInsets.only(top: 8, left: 8, right: 8),

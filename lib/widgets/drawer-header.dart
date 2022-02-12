@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
+import 'package:flutter_tftt/extensions/string-extension.dart';
 import 'package:flutter_tftt/utils/settings_key.dart';
+import 'package:flutter_tftt/utils/globals.dart' as globals;
 
-class ProfileHeader extends StatefulWidget {
-  const ProfileHeader({
-    Key key,
-  }) : super(key: key);
+class DrawerHeaderWidget extends StatelessWidget {
+  DrawerHeaderWidget();
 
-  @override
-  _DrawerHeaderState createState() => _DrawerHeaderState();
-}
-
-class _DrawerHeaderState extends State<ProfileHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,14 +15,13 @@ class _DrawerHeaderState extends State<ProfileHeader> {
       child: DrawerHeader(
           decoration: BoxDecoration(color: MaterialColors.drawer),
           child: Container(
-              // padding: EdgeInsets.symmetric(horizontal: 28.0),
               child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0, top: 16.0),
-                child: Text("Théo Laperrouse",
+                child: Text("${globals.player.prenom} ${globals.player.nom}",
                     style: TextStyle(color: Colors.white, fontSize: 21)),
               ),
               Padding(
@@ -41,7 +35,9 @@ class _DrawerHeaderState extends State<ProfileHeader> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: MaterialColors.label),
-                          child: Text("R3",
+                          child: Text(
+                              Settings.getValue<String>('team', 'r3')
+                                  .capitalize(),
                               style: TextStyle(
                                   color: Colors.white, fontSize: 16))),
                     ),
@@ -63,7 +59,7 @@ class _DrawerHeaderState extends State<ProfileHeader> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 8.0),
-                          child: Text("1389",
+                          child: Text(globals.player.points.split(".")[0],
                               style: TextStyle(
                                   color: MaterialColors.warning, fontSize: 16)),
                         ),
