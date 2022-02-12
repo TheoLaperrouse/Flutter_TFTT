@@ -3,10 +3,10 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-List<Picture> postFromJson(String str) =>
+List<Picture> picturesFromJson(String str) =>
     List<Picture>.from(json.decode(str).map((x) => Picture.fromJson(x)));
 
-String postToJson(List<Picture> data) =>
+String picturesToJson(List<Picture> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 Future<List<String>> fetchPictureLinks() async {
@@ -14,7 +14,7 @@ Future<List<String>> fetchPictureLinks() async {
       await http.get(Uri.parse('https://thorigne-tt.net/wp-json/wp/v2/media'));
   if (response.statusCode == 200) {
     RegExp imageRegExp = new RegExp(r"\.(jpe?g|png)$");
-    List<String> pictureLinks = await postFromJson(response.body)
+    List<String> pictureLinks = await picturesFromJson(response.body)
         .where((media) => imageRegExp.hasMatch((media.pictureLink)))
         .map((picture) => picture.pictureLink)
         .toList();

@@ -2,27 +2,30 @@ import 'package:flutter/material.dart';
 
 class CardMatch extends StatelessWidget {
   CardMatch({
-    this.name = "Gwendal Labrue",
-    this.result = "Défaite",
+    this.date = "",
+    this.name = "Théo Laperrouse",
+    this.classement = "500",
+    this.victoire = false,
   });
 
+  final String date;
   final String name;
-  final String result;
+  final String classement;
+  final bool victoire;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      height: 40,
       child: Stack(clipBehavior: Clip.hardEdge, children: [
         Card(
+          color: victoire ? Colors.green : Colors.red,
           elevation: 0.7,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(6.0))),
-          child: Row(
-            children: [
-              Flexible(flex: 1, child: Text(this.result)),
-            ],
-          ),
+          child: Center(
+              child: Text(
+                  this.date + " " + this.name + ' (' + this.classement + ')')),
         ),
       ]),
     );

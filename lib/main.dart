@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:flutter_tftt/models/player.dart';
+import 'package:flutter_tftt/utils/globals.dart' as globals;
 
 // screens
 import 'package:flutter_tftt/screens/home.dart';
@@ -13,6 +15,7 @@ import 'package:intl/date_symbol_data_local.dart';
 Future<void> main() async {
   await initializeDateFormatting();
   await initSettings();
+  await initPlayer();
   runApp(ApplicationTFTT());
 }
 
@@ -20,6 +23,13 @@ Future<void> initSettings() async {
   await Settings.init(
     cacheProvider: SharePreferenceCache(),
   );
+}
+
+Future<void> initPlayer() async {
+  await fetchPlayer(Settings.getValue<String>('numLicence', '3524012'))
+      .then((result) {
+    globals.player = result;
+  });
 }
 
 class ApplicationTFTT extends StatelessWidget {
