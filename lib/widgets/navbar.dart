@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
-import 'package:flutter_tftt/utils/link.dart';
+import 'package:flutter_tftt/utils/utils.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -126,8 +127,9 @@ class _NavbarState extends State<Navbar> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        await UtilsFunction.launchLink(
-                            'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468');
+                        await UtilsFunction.launchLink(!kIsWeb
+                            ? 'fb://page/251704445607468'
+                            : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468');
                       },
                       child: IconButton(
                           icon: Icon(Icons.facebook,

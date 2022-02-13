@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/event.dart';
+import 'package:flutter_tftt/utils/utils.dart';
 //widgets
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
@@ -13,7 +14,7 @@ class TableBooking extends StatefulWidget {
 }
 
 class _TableBookingState extends State<TableBooking> {
-  Map<DateTime, List<Event>> selectedEvents;
+  Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
@@ -33,10 +34,23 @@ class _TableBookingState extends State<TableBooking> {
     }
   }
 
+  List<Event> eventsList;
   @override
   void initState() {
-    selectedEvents = {};
     super.initState();
+    fetchEvents().then((result) {
+      setState(() {
+        // result.forEach((event) => {
+        //       if (selectedEvents[selectedDay] != null)
+        //         {selectedEvents[event.startDate].add(event)}
+        //       else
+        //         {
+        //           selectedEvents[event.startDate] = [event]
+        //         }
+        //     });
+        // debugPrint(selectedEvents.toString());
+      });
+    });
   }
 
   List<Event> _getEventsfromDay(DateTime date) {
@@ -80,7 +94,7 @@ class _TableBookingState extends State<TableBooking> {
             selectedDayPredicate: (DateTime date) {
               return isSameDay(selectedDay, date);
             },
-            eventLoader: _getEventsfromDay,
+            // eventLoader: _getEventsfromDay,
             calendarStyle: CalendarStyle(
               isTodayHighlighted: true,
               selectedDecoration: BoxDecoration(
@@ -150,10 +164,17 @@ class _TableBookingState extends State<TableBooking> {
               ),
               TextButton(
                 child: Text("Valider"),
-                onPressed: () {
+                onPressed: () async {
                   endDate = TimeOfDay(
-                      hour: startDate.hour + 1, minute: startDate.minute);
+                      hour: this.startDate.hour + 1,
+                      minute: this.startDate.minute);
                   var event = Event(
+                      // day: selectedDay,
+                      startDate: UtilsFunction.timeOfDayToDateTime(
+                          this.selectedDay, this.startDate),
+                      endDate: UtilsFunction.timeOfDayToDateTime(
+                          this.selectedDay, this.endDate),
+                      type: 'tableBooking',
                       title:
                           'Réservation Table : \n ${startDate.format(context)} - ${endDate.format(context)}');
                   if (selectedEvents[selectedDay] != null) {
@@ -161,9 +182,8 @@ class _TableBookingState extends State<TableBooking> {
                   } else {
                     selectedEvents[selectedDay] = [event];
                   }
-
+                  await postEvent(event);
                   Navigator.pop(context);
-                  setState(() {});
                   return;
                 },
               ),

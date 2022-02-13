@@ -10,8 +10,12 @@ String teamsToJson(List<Team> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 Future<List<Team>> fetchTeams(numClub) async {
-  final response =
-      await http.get(Uri.parse("${Api.apiBaseUrl}/teams/$numClub"));
+  final response = await http.get(
+    Uri.parse("${Api.apiBaseUrl}/teams/$numClub"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
   if (response.statusCode == 200) {
     List<Team> teams = await teamsFromJson(response.body).toList();
     return teams;
