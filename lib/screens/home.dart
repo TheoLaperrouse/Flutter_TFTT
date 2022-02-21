@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                         child: CardHorizontal(
                             cta: "Voir l'article",
                             title: posts[index].title,
-                            img: 'assets/img/match.jpg',
+                            networkImg: posts[index].networkImg,
                             tap: () async {
                               await UtilsFunction.launchLink(posts[index].link);
                             }),

@@ -38,6 +38,15 @@ Lance l'application en vue Web :
 ```
 flutter run
 ```
+Il y a des problèmes avec la récupération des images depuis l'appli web, du à un bug connu, pas de Headers pour NetworkImage voir ici:
+
+https://github.com/flutter/flutter/issues/57187 & https://api.flutter.dev/flutter/painting/NetworkImage/headers.html
+
+Utiliser cette command pour modifier la gestion de la récupération des images:
+```
+flutter run -d chrome --web-renderer html
+```
+
 
 ## Librairies
 
@@ -58,9 +67,7 @@ flutter run
 
 - Compos d'équipes
 - Place dématérialisée match de Pro
-- Commande matériel
-- Réservation de séance Indiv
-- Planning
+- 
 
 ## Idées
 

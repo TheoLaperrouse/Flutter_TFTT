@@ -3,5 +3,6 @@ class SettingsKey {
     'joueur': 'Joueur',
     'entraineur': 'Entraîneur',
     'bureau': 'Bureau',
+    'benevole': 'Bénévole'
   };
 }

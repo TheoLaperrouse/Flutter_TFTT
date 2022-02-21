@@ -9,4 +9,9 @@ class UtilsFunction {
     return new DateTime(
         selectedDay.year, selectedDay.month, selectedDay.day, t.hour, t.minute);
   }
+
+  static DateTime getDay(selectedDay) {
+    return new DateTime.utc(
+        selectedDay.year, selectedDay.month, selectedDay.day);
+  }
 }

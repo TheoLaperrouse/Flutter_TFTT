@@ -16,10 +16,11 @@ class TableBooking extends StatefulWidget {
 class _TableBookingState extends State<TableBooking> {
   Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
-  DateTime selectedDay = DateTime.now();
-  DateTime focusedDay = DateTime.now();
+  DateTime selectedDay = UtilsFunction.getDay(DateTime.now());
+  DateTime focusedDay = UtilsFunction.getDay(DateTime.now());
   TimeOfDay startDate = TimeOfDay.now();
   TimeOfDay endDate;
+  String typeBooking;
 
   void _selectTime() async {
     final TimeOfDay newTime = await showTimePicker(
@@ -40,31 +41,40 @@ class _TableBookingState extends State<TableBooking> {
     super.initState();
     fetchEvents().then((result) {
       setState(() {
-        // result.forEach((event) => {
-        //       if (selectedEvents[selectedDay] != null)
-        //         {selectedEvents[event.startDate].add(event)}
-        //       else
-        //         {
-        //           selectedEvents[event.startDate] = [event]
-        //         }
-        //     });
-        // debugPrint(selectedEvents.toString());
+        result.forEach((event) => {
+              if (selectedEvents[UtilsFunction.getDay(event.startDate)] != null)
+                {
+                  selectedEvents[UtilsFunction.getDay(event.startDate)]
+                      .add(event)
+                }
+              else
+                {
+                  selectedEvents[UtilsFunction.getDay(event.startDate)] = [
+                    event
+                  ]
+                }
+            });
       });
     });
   }
 
   List<Event> _getEventsfromDay(DateTime date) {
-    return selectedEvents[date] ?? [];
+    if (selectedEvents[date] != null) {
+      var events = selectedEvents[date];
+      events.sort((a, b) => a.startDate.compareTo(b.startDate));
+      return events;
+    }
+    return [];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(
-        title: "Réservation Table",
+        title: "Calendrier",
       ),
       backgroundColor: MaterialColors.bgColorScreen,
-      drawer: MaterialDrawer(currentPage: "Réservation Table"),
+      drawer: MaterialDrawer(currentPage: "Calendrier"),
       body: Column(
         children: [
           TableCalendar(
@@ -73,7 +83,7 @@ class _TableBookingState extends State<TableBooking> {
               CalendarFormat.twoWeeks: '2 Semaines',
               CalendarFormat.week: 'Semaine'
             },
-            focusedDay: selectedDay,
+            focusedDay: UtilsFunction.getDay(selectedDay),
             firstDay: DateTime(1990),
             lastDay: DateTime(2050),
             locale: 'fr-FR',
@@ -87,15 +97,16 @@ class _TableBookingState extends State<TableBooking> {
             daysOfWeekVisible: true,
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
               setState(() {
-                selectedDay = selectDay;
-                focusedDay = focusDay;
+                selectedDay = UtilsFunction.getDay(selectDay);
+                focusedDay = UtilsFunction.getDay(focusDay);
               });
             },
             selectedDayPredicate: (DateTime date) {
               return isSameDay(selectedDay, date);
             },
-            // eventLoader: _getEventsfromDay,
+            eventLoader: _getEventsfromDay,
             calendarStyle: CalendarStyle(
+              markerSize: 12,
               isTodayHighlighted: true,
               selectedDecoration: BoxDecoration(
                 color: MaterialColors.drawer,
@@ -133,12 +144,17 @@ class _TableBookingState extends State<TableBooking> {
           SizedBox(
             height: 15,
           ),
-          ..._getEventsfromDay(selectedDay).map(
-            (Event event) => CardHorizontal(
-              title: event.title,
-              img: 'assets/img/match.jpg',
-            ),
-          ),
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(
+            children: [
+              ..._getEventsfromDay(selectedDay).map(
+                (Event event) => CardHorizontal(
+                  title: event.title,
+                ),
+              ),
+            ],
+          )))
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -147,16 +163,18 @@ class _TableBookingState extends State<TableBooking> {
           context: context,
           builder: (context) => AlertDialog(
             title: Text("Réserver une table"),
-            content: Column(children: [
-              ElevatedButton(
-                onPressed: _selectTime,
-                child: Text("Choisir l'heure du début de la séance"),
+            content: Container(
+              height: 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: _selectTime,
+                    child: Text("Heure de début de l'événement"),
+                  ),
+                ],
               ),
-              SizedBox(height: 8),
-              Text(
-                'Début : ${startDate.format(context)}',
-              ),
-            ]),
+            ),
             actions: [
               TextButton(
                 child: Text("Annuler"),
@@ -169,20 +187,24 @@ class _TableBookingState extends State<TableBooking> {
                       hour: this.startDate.hour + 1,
                       minute: this.startDate.minute);
                   var event = Event(
-                      // day: selectedDay,
                       startDate: UtilsFunction.timeOfDayToDateTime(
                           this.selectedDay, this.startDate),
                       endDate: UtilsFunction.timeOfDayToDateTime(
                           this.selectedDay, this.endDate),
-                      type: 'tableBooking',
+                      type: typeBooking,
                       title:
-                          'Réservation Table : \n ${startDate.format(context)} - ${endDate.format(context)}');
-                  if (selectedEvents[selectedDay] != null) {
-                    selectedEvents[selectedDay].add(event);
+                          '$typeBooking : \n ${startDate.format(context)} - ${endDate.format(context)}');
+                  DateTime formattedDay = UtilsFunction.getDay(selectedDay);
+                  if (selectedEvents[formattedDay] != null) {
+                    selectedEvents[formattedDay].add(event);
                   } else {
-                    selectedEvents[selectedDay] = [event];
+                    selectedEvents[formattedDay] = [event];
                   }
                   await postEvent(event);
+                  // Refresh list
+                  setState(() {
+                    selectedDay = formattedDay;
+                  });
                   Navigator.pop(context);
                   return;
                 },

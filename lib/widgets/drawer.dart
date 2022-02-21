@@ -58,15 +58,14 @@ class MaterialDrawer extends StatelessWidget {
             if (Settings.getValue<String>('profileType', 'Joueur') !=
                 "entraineur")
               DrawerTile(
-                  icon: Icons.book_online_outlined,
+                  icon: Icons.calendar_today,
                   onTap: () {
-                    if (currentPage != "Réservation de tables")
+                    if (currentPage != "Calendrier")
                       Navigator.pushReplacementNamed(context, '/tablebooking');
                   },
                   iconColor: Colors.black,
-                  title: "Réservation de tables",
-                  isSelected:
-                      currentPage == "Réservation de tables" ? true : false),
+                  title: "Calendrier",
+                  isSelected: currentPage == "Calendrier" ? true : false),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {

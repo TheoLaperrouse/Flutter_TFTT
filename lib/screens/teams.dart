@@ -6,20 +6,25 @@ import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 
+import '../utils/utils.dart';
+
+String baseUrl =
+    "https://www.pongiste.fr/include/pages/equipes.php?cx_poule=207068&D1=37884&organisme_pere=1&poule=1&num_club=03350060&color=5E9DC8&taille=&nomequipe=T.T%20THORIGNE-FOUILLARD%201&nomequipe=T.T%20THORIGNE-FOUILLARD%201&num_phase=all&numpoule=1&division=FED_PRO+B+Messieurs&phase=2";
+
 class Teams extends StatefulWidget {
   @override
   _TeamsState createState() => _TeamsState();
 }
 
 class _TeamsState extends State<Teams> {
-  List<String> teams = [];
+  List<Team> teams = [];
 
   @override
   void initState() {
     super.initState();
     fetchTeams("03350060").then((result) {
       setState(() {
-        teams = result.map((team) => team.nomEquipe).toList();
+        teams = result.toList();
       });
     });
   }
@@ -43,10 +48,9 @@ class _TeamsState extends State<Teams> {
                         padding: const EdgeInsets.only(top: 16.0),
                         child: CardHorizontal(
                             cta: "Voir les résultats de l'équipe",
-                            title: teams[index],
-                            img: 'assets/img/match.jpg',
+                            title: teams[index].nomEquipe,
                             tap: () {
-                              //UtilsFunction.launchLink(posts[index].link);
+                              UtilsFunction.launchLink(baseUrl);
                             }),
                       ),
                     ),

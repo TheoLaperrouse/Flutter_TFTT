@@ -5,11 +5,11 @@ class CardHorizontal extends StatelessWidget {
   CardHorizontal(
       {this.title = "Placeholder Title",
       this.cta = "",
-      this.img = "https://via.placeholder.com/200",
+      this.networkImg = null,
       this.tap = defaultFunc});
 
   final String cta;
-  final String img;
+  final String networkImg;
   final Function tap;
   final String title;
 
@@ -71,7 +71,10 @@ class CardHorizontal extends StatelessWidget {
                         ],
                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         image: DecorationImage(
-                            image: AssetImage(img), fit: BoxFit.cover))),
+                            image: this.networkImg != null
+                                ? NetworkImage(networkImg)
+                                : AssetImage('assets/img/match.jpg'),
+                            fit: BoxFit.cover))),
               ),
             ),
           ]),
