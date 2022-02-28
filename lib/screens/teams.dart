@@ -36,7 +36,7 @@ class _TeamsState extends State<Teams> {
           title: "Application du TFTT",
         ),
         backgroundColor: MaterialColors.bgColorScreen,
-        drawer: MaterialDrawer(currentPage: "Posts du TFTT"),
+        drawer: MaterialDrawer(currentPage: "Les Équipes"),
         body: Container(
             padding: EdgeInsets.only(left: 16.0, right: 16.0),
             child: teams.length > 0
@@ -50,7 +50,8 @@ class _TeamsState extends State<Teams> {
                             cta: "Voir les résultats de l'équipe",
                             title: teams[index].nomEquipe,
                             tap: () {
-                              UtilsFunction.launchLink(baseUrl);
+                              UtilsFunction.launchLink(
+                                  "https://thorigne-tt.net/la-pro-b/");
                             }),
                       ),
                     ),

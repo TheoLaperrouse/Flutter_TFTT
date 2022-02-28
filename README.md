@@ -42,11 +42,15 @@ Il y a des problèmes avec la récupération des images depuis l'appli web, du �
 
 https://github.com/flutter/flutter/issues/57187 & https://api.flutter.dev/flutter/painting/NetworkImage/headers.html
 
-Utiliser cette command pour modifier la gestion de la récupération des images:
+Utiliser cette commande pour modifier la gestion de la récupération des images:
 ```
 flutter run -d chrome --web-renderer html
 ```
 
+Build de l'application pour release sur PlayStore :
+```
+flutter build appbundle --release
+```
 
 ## Librairies
 
@@ -67,7 +71,6 @@ flutter run -d chrome --web-renderer html
 
 - Compos d'équipes
 - Place dématérialisée match de Pro
-- 
 
 ## Idées
 

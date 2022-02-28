@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
@@ -57,9 +58,15 @@ Widget buildTeam() => DropDownSettingsTile<String>(
       selected: 'r1',
     );
 Widget buildNotification() => SwitchSettingsTile(
-      title: 'Activer/Désactiver les notifications',
-      settingKey: 'enableNotification',
-      enabledLabel: 'Activé',
-      disabledLabel: 'Désactivé',
-      leading: Icon(Icons.notifications),
-    );
+    title: 'Activer/Désactiver les notifications',
+    settingKey: 'notificationEnabled',
+    enabledLabel: 'Activé',
+    disabledLabel: 'Désactivé',
+    leading: Icon(Icons.notifications),
+    onChange: (notificationEnabled) => {
+          AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+            if (!isAllowed) {
+              AwesomeNotifications().requestPermissionToSendNotifications();
+            }
+          })
+        });

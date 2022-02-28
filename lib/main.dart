@@ -10,12 +10,14 @@ import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/tablebooking.dart';
 import 'package:flutter_tftt/screens/teams.dart';
+import 'package:flutter_tftt/utils/notifications.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   await initializeDateFormatting();
   await initSettings();
   await initPlayer();
+  initializeNotification();
   runApp(ApplicationTFTT());
 }
 

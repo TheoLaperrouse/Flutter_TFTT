@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Navbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -121,7 +122,7 @@ class _NavbarState extends State<Navbar> {
                             'https://www.instagram.com/thorignett/');
                       },
                       child: IconButton(
-                          icon: Icon(Icons.photo_camera,
+                          icon: FaIcon(FontAwesomeIcons.instagram,
                               color: Colors.black, size: 22.0),
                           onPressed: null),
                     ),

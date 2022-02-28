@@ -191,9 +191,9 @@ class _TableBookingState extends State<TableBooking> {
                           this.selectedDay, this.startDate),
                       endDate: UtilsFunction.timeOfDayToDateTime(
                           this.selectedDay, this.endDate),
-                      type: typeBooking,
+                      type: 'Réservation de Table',
                       title:
-                          '$typeBooking : \n ${startDate.format(context)} - ${endDate.format(context)}');
+                          'Réservation de Table : \n ${startDate.format(context)} - ${endDate.format(context)}');
                   DateTime formattedDay = UtilsFunction.getDay(selectedDay);
                   if (selectedEvents[formattedDay] != null) {
                     selectedEvents[formattedDay].add(event);
