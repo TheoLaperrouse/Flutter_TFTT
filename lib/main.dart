@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:flutter_tftt/models/live.dart';
 import 'package:flutter_tftt/models/player.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
 
@@ -10,14 +11,14 @@ import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/tablebooking.dart';
 import 'package:flutter_tftt/screens/teams.dart';
-import 'package:flutter_tftt/utils/notifications.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
   await initializeDateFormatting();
   await initSettings();
   await initPlayer();
-  initializeNotification();
+  await initLive();
+  //initializeNotification();
   runApp(ApplicationTFTT());
 }
 

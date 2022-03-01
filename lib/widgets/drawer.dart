@@ -1,12 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:flutter_tftt/utils/globals.dart' as globals;
+import 'package:flutter_tftt/utils/utils.dart';
 //widgets
 import 'package:flutter_tftt/widgets/drawer-header.dart';
 import 'package:flutter_tftt/widgets/drawer-tile.dart';
 
 class MaterialDrawer extends StatelessWidget {
   final String currentPage;
-
   MaterialDrawer({this.currentPage});
 
   @override
@@ -19,6 +21,17 @@ class MaterialDrawer extends StatelessWidget {
             child: ListView(
           padding: EdgeInsets.only(top: 8, left: 8, right: 8),
           children: [
+            if (globals.live.isLive)
+              DrawerTile(
+                  icon: Icons.live_tv,
+                  onTap: () async {
+                    await UtilsFunction.launchLink(!kIsWeb
+                        ? 'fb://page/251704445607468'
+                        : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT/videos/${globals.live.liveId}/');
+                  },
+                  iconColor: Color.fromARGB(255, 255, 17, 0),
+                  title: "Live en cours",
+                  isSelected: false),
             DrawerTile(
                 icon: Icons.home,
                 onTap: () {
