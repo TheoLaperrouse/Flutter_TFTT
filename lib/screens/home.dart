@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
                             title: posts[index].title,
                             networkImg: posts[index].networkImg,
                             tap: () async {
-                              await UtilsFunction.launchLink(posts[index].link);
+                              await Utils.launchLink(posts[index].link);
                             }),
                       ),
                     ),

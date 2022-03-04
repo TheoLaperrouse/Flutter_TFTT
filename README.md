@@ -69,8 +69,22 @@ flutter build appbundle --release
 
 ## À faire
 
+### Front
+
 - Compos d'équipes
 - Place dématérialisée match de Pro
+- Renommer les types dans les events
+- Faire un profil plus joli avec des Card plus estéthiques
+- Trouver des images adéquates pour les événements
+- Live redirection => vers le live
+- Légende code couleur event
+- Modal à la première utilisation pour renseigner les settings
+- Tableau de clé-valeur Equipe - Label (BDD ou Constant)
+
+### Back
+
+- Uniformiser les routes (pas de majuscules isLive)
+- Ajouter Évenements Récurrents
 
 ## Idées
 

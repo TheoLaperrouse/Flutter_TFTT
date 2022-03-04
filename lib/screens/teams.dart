@@ -50,7 +50,7 @@ class _TeamsState extends State<Teams> {
                             cta: "Voir les résultats de l'équipe",
                             title: teams[index].nomEquipe,
                             tap: () {
-                              UtilsFunction.launchLink(
+                              Utils.launchLink(
                                   "https://thorigne-tt.net/la-pro-b/");
                             }),
                       ),

@@ -6,19 +6,21 @@ class CardHorizontal extends StatelessWidget {
       {this.title = "Placeholder Title",
       this.cta = "",
       this.networkImg = null,
-      this.tap = defaultFunc});
+      this.tap = defaultFunc,
+      this.height = 130});
 
   final String cta;
   final String networkImg;
   final Function tap;
   final String title;
+  final double height;
 
   static void defaultFunc() {}
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 130,
+        height: height,
         margin: EdgeInsets.only(top: 10),
         child: GestureDetector(
           onTap: tap,

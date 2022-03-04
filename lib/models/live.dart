@@ -12,7 +12,7 @@ Future<void> initLive() async {
 }
 
 Future<Live> fetchLive() async {
-  final response = await http.get(Uri.parse("${Api.apiBaseUrl}/is_live"));
+  final response = await http.get(Uri.parse("${Api.apiBaseUrl}/isLive"));
   if (response.statusCode == 200) {
     Live live = await liveFromJson(response.body);
     return live;

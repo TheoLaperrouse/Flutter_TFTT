@@ -118,7 +118,7 @@ class _NavbarState extends State<Navbar> {
                   children: [
                     GestureDetector(
                       onTap: () async {
-                        await UtilsFunction.launchLink(
+                        await Utils.launchLink(
                             'https://www.instagram.com/thorignett/');
                       },
                       child: IconButton(
@@ -128,7 +128,7 @@ class _NavbarState extends State<Navbar> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        await UtilsFunction.launchLink(!kIsWeb
+                        await Utils.launchLink(!kIsWeb
                             ? 'fb://page/251704445607468'
                             : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468');
                       },
@@ -139,8 +139,7 @@ class _NavbarState extends State<Navbar> {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        await UtilsFunction.launchLink(
-                            'https://ker-crea.fr/168-tftt');
+                        await Utils.launchLink('https://ker-crea.fr/168-tftt');
                       },
                       child: IconButton(
                           icon: Icon(Icons.add_shopping_cart,

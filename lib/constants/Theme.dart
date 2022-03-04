@@ -1,4 +1,4 @@
-import 'dart:ui' show Color;
+import 'package:flutter/material.dart';
 
 class MaterialColors {
   static const Color defaultButton = Color.fromRGBO(220, 220, 220, 1.0);
@@ -25,4 +25,12 @@ class MaterialColors {
   static const Color socialFacebook = Color.fromRGBO(59, 89, 152, 1.0);
   static const Color socialTwitter = Color.fromRGBO(91, 192, 222, 1.0);
   static const Color socialDribbble = Color.fromRGBO(234, 76, 137, 1.0);
+}
+
+class eventMarker {
+  static const colors = {
+    "Entraînement": Colors.black,
+    "Réservation de Table": Colors.blue,
+    "Match de Pro B": Colors.red,
+  };
 }

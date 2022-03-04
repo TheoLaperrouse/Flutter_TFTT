@@ -25,7 +25,7 @@ class MaterialDrawer extends StatelessWidget {
               DrawerTile(
                   icon: Icons.live_tv,
                   onTap: () async {
-                    await UtilsFunction.launchLink(!kIsWeb
+                    await Utils.launchLink(!kIsWeb
                         ? 'fb://page/251704445607468'
                         : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT/videos/${globals.live.liveId}/');
                   },

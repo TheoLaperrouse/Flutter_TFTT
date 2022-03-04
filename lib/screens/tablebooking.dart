@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tftt/constants/RecurringEvents.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/event.dart';
 import 'package:flutter_tftt/utils/utils.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_tftt/utils/utils.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 import 'package:flutter_tftt/widgets/navbar.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TableBooking extends StatefulWidget {
@@ -16,8 +18,8 @@ class TableBooking extends StatefulWidget {
 class _TableBookingState extends State<TableBooking> {
   Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
-  DateTime selectedDay = UtilsFunction.getDay(DateTime.now());
-  DateTime focusedDay = UtilsFunction.getDay(DateTime.now());
+  DateTime selectedDay = Utils.getDay(DateTime.now());
+  DateTime focusedDay = Utils.getDay(DateTime.now());
   TimeOfDay startDate = TimeOfDay.now();
   TimeOfDay endDate;
   String typeBooking;
@@ -42,16 +44,11 @@ class _TableBookingState extends State<TableBooking> {
     fetchEvents().then((result) {
       setState(() {
         result.forEach((event) => {
-              if (selectedEvents[UtilsFunction.getDay(event.startDate)] != null)
-                {
-                  selectedEvents[UtilsFunction.getDay(event.startDate)]
-                      .add(event)
-                }
+              if (selectedEvents[Utils.getDay(event.startDate)] != null)
+                {selectedEvents[Utils.getDay(event.startDate)].add(event)}
               else
                 {
-                  selectedEvents[UtilsFunction.getDay(event.startDate)] = [
-                    event
-                  ]
+                  selectedEvents[Utils.getDay(event.startDate)] = [event]
                 }
             });
       });
@@ -59,9 +56,10 @@ class _TableBookingState extends State<TableBooking> {
   }
 
   List<Event> _getEventsfromDay(DateTime date) {
-    if (selectedEvents[date] != null) {
-      var events = selectedEvents[date];
-      events.sort((a, b) => a.startDate.compareTo(b.startDate));
+    List<Event> dayEvents = recurringEvents[date.weekday];
+    if (dayEvents != [] || selectedEvents[date] != null) {
+      List<Event> events = [...dayEvents, ...(selectedEvents[date] ?? [])];
+      events.sort((a, b) => Utils.compareTimeOfDay(a.startDate, b.startDate));
       return events;
     }
     return [];
@@ -83,7 +81,7 @@ class _TableBookingState extends State<TableBooking> {
               CalendarFormat.twoWeeks: '2 Semaines',
               CalendarFormat.week: 'Semaine'
             },
-            focusedDay: UtilsFunction.getDay(selectedDay),
+            focusedDay: Utils.getDay(selectedDay),
             firstDay: DateTime(1990),
             lastDay: DateTime(2050),
             locale: 'fr-FR',
@@ -97,8 +95,8 @@ class _TableBookingState extends State<TableBooking> {
             daysOfWeekVisible: true,
             onDaySelected: (DateTime selectDay, DateTime focusDay) {
               setState(() {
-                selectedDay = UtilsFunction.getDay(selectDay);
-                focusedDay = UtilsFunction.getDay(focusDay);
+                selectedDay = Utils.getDay(selectDay);
+                focusedDay = Utils.getDay(focusDay);
               });
             },
             selectedDayPredicate: (DateTime date) {
@@ -140,6 +138,24 @@ class _TableBookingState extends State<TableBooking> {
                 color: Colors.white,
               ),
             ),
+            calendarBuilders: CalendarBuilders(
+              singleMarkerBuilder: (context, date, event) {
+                if (event.type != 'Entraînement') {
+                  return Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: date == selectedDay
+                            ? Colors.white
+                            : eventMarker.colors[event.type]),
+                    width: 5.0,
+                    height: 5.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
           ),
           SizedBox(
             height: 15,
@@ -148,11 +164,10 @@ class _TableBookingState extends State<TableBooking> {
               child: SingleChildScrollView(
                   child: Column(
             children: [
-              ..._getEventsfromDay(selectedDay).map(
-                (Event event) => CardHorizontal(
-                  title: event.title,
-                ),
-              ),
+              ..._getEventsfromDay(selectedDay).map((Event event) => CardHorizontal(
+                  title:
+                      '${event.title} : \n${DateFormat('kk:mm').format(event.startDate)} - ${DateFormat('kk:mm').format(event.endDate)}',
+                  height: 110)),
             ],
           )))
         ],
@@ -187,14 +202,13 @@ class _TableBookingState extends State<TableBooking> {
                       hour: this.startDate.hour + 1,
                       minute: this.startDate.minute);
                   var event = Event(
-                      startDate: UtilsFunction.timeOfDayToDateTime(
+                      startDate: Utils.timeOfDayToDateTime(
                           this.selectedDay, this.startDate),
-                      endDate: UtilsFunction.timeOfDayToDateTime(
+                      endDate: Utils.timeOfDayToDateTime(
                           this.selectedDay, this.endDate),
                       type: 'Réservation de Table',
-                      title:
-                          'Réservation de Table : \n ${startDate.format(context)} - ${endDate.format(context)}');
-                  DateTime formattedDay = UtilsFunction.getDay(selectedDay);
+                      title: 'Réservation de Table');
+                  DateTime formattedDay = Utils.getDay(selectedDay);
                   if (selectedEvents[formattedDay] != null) {
                     selectedEvents[formattedDay].add(event);
                   } else {
