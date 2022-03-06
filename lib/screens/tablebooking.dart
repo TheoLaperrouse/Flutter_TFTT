@@ -187,6 +187,14 @@ class _TableBookingState extends State<TableBooking> {
                     onPressed: _selectTime,
                     child: Text("Heure de début de l'événement"),
                   ),
+                  // if (!Utils.canAddEvent(
+                  //   _getEventsfromDay(selectedDay),
+                  //   Utils.timeOfDayToDateTime(selectedDay, startDate),
+                  //   Utils.timeOfDayToDateTime(selectedDay, endDate),
+                  // ))
+                  //   Text(Utils.timeOfDayToDateTime(selectedDay, startDate)
+                  //       .toIso8601String()),
+                  // Text(""),
                 ],
               ),
             ),
@@ -209,6 +217,7 @@ class _TableBookingState extends State<TableBooking> {
                       type: 'Réservation de Table',
                       title: 'Réservation de Table');
                   DateTime formattedDay = Utils.getDay(selectedDay);
+                  // Add an event
                   if (selectedEvents[formattedDay] != null) {
                     selectedEvents[formattedDay].add(event);
                   } else {

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
 import 'package:flutter_tftt/utils/utils.dart';
 //widgets
@@ -27,7 +26,7 @@ class MaterialDrawer extends StatelessWidget {
                   onTap: () async {
                     await Utils.launchLink(!kIsWeb
                         ? 'fb://page/251704445607468'
-                        : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT/videos/${globals.live.liveId}/');
+                        : 'https://www.facebook.com/Equipe-professionnelle-Thorign%C3%A9-Fouillard-TT-251704445607468'); //videos/${globals.live.liveId}/
                   },
                   iconColor: Color.fromARGB(255, 255, 17, 0),
                   title: "Live en cours",
@@ -68,17 +67,15 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Les Équipes",
                 isSelected: currentPage == "Les Équipes" ? true : false),
-            if (Settings.getValue<String>('profileType', 'Joueur') !=
-                "entraineur")
-              DrawerTile(
-                  icon: Icons.calendar_today,
-                  onTap: () {
-                    if (currentPage != "Calendrier")
-                      Navigator.pushReplacementNamed(context, '/tablebooking');
-                  },
-                  iconColor: Colors.black,
-                  title: "Calendrier",
-                  isSelected: currentPage == "Calendrier" ? true : false),
+            DrawerTile(
+                icon: Icons.calendar_today,
+                onTap: () {
+                  if (currentPage != "Calendrier")
+                    Navigator.pushReplacementNamed(context, '/tablebooking');
+                },
+                iconColor: Colors.black,
+                title: "Calendrier",
+                isSelected: currentPage == "Calendrier" ? true : false),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {

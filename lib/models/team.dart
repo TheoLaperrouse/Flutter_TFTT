@@ -3,6 +3,26 @@ import 'package:flutter_tftt/api.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+Map<String, String> divNames = {
+  'FED': 'Nationale',
+  'L03': 'Régionale',
+  'D35': 'Départemental'
+};
+
+String getName(String nomEquipe) {
+  List<String> names = divNames.keys.toList();
+  for (var name in names) {
+    if (nomEquipe.startsWith(name)) {
+      return nomEquipe
+          .substring(4)
+          .split('Poule')[0]
+          .replaceAll('Division', 'Départemental')
+          .replaceAll('_', ' ');
+    }
+  }
+  return nomEquipe;
+}
+
 List<Team> teamsFromJson(String str) =>
     List<Team>.from(json.decode(str).map((x) => Team.fromJson(x)));
 
@@ -37,7 +57,7 @@ class Team {
   String lien;
 
   factory Team.fromJson(Map<String, dynamic> json) => Team(
-        nomEquipe: json["equipe"],
+        nomEquipe: getName(json["equipe"]),
         lien: json["lien"],
         championnat: json["championnat"],
       );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tftt/models/event.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
@@ -21,6 +22,12 @@ class Utils {
     DateTime timeOfDayB =
         new DateTime(0, 0, 0, dateTimeB.hour, dateTimeB.minute);
     return timeOfDayA.compareTo(timeOfDayB);
+  }
+
+  static bool canAddEvent(
+      List<Event> events, DateTime startDate, DateTime endDate) {
+    return events.every((event) =>
+        startDate.isAfter(event.endDate) && endDate.isBefore(event.startDate));
   }
 
   static DateTime getDay(selectedDay) {
