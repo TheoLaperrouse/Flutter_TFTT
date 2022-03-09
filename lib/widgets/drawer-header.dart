@@ -11,7 +11,7 @@ class DrawerHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
+      height: 143,
       child: DrawerHeader(
           decoration: BoxDecoration(color: MaterialColors.drawer),
           child: Container(
