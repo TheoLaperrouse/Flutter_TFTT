@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
-import 'package:flutter_tftt/extensions/string-extension.dart';
 import 'package:flutter_tftt/utils/settings_key.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
+import 'package:flutter_tftt/utils/utils.dart';
 
 class DrawerHeaderWidget extends StatelessWidget {
   DrawerHeaderWidget();
@@ -36,8 +36,8 @@ class DrawerHeaderWidget extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                               color: MaterialColors.label),
                           child: Text(
-                              Settings.getValue<String>('team', 'r3')
-                                  .capitalize(),
+                              Utils.formatTeamName(globals.teamSettings[
+                                  Settings.getValue<String>('team', '0')]),
                               style: TextStyle(
                                   color: Colors.white, fontSize: 16))),
                     ),

@@ -16,6 +16,15 @@ class Utils {
     return new TimeOfDay(hour: dateTime.hour, minute: dateTime.minute);
   }
 
+  static String formatTeamName(String teamName) {
+    teamName = teamName.split(' n°')[0].replaceFirst(' Dames', '');
+    if (teamName.length > 12) {
+      return '${teamName.substring(0, 3)}.${teamName.substring(teamName.length - 1)}';
+    } else {
+      return teamName;
+    }
+  }
+
   static int compareTimeOfDay(DateTime dateTimeA, DateTime dateTimeB) {
     DateTime timeOfDayA =
         new DateTime(0, 0, 0, dateTimeA.hour, dateTimeA.minute);
@@ -24,8 +33,10 @@ class Utils {
     return timeOfDayA.compareTo(timeOfDayB);
   }
 
-  static bool canAddEvent(
-      List<Event> events, DateTime startDate, DateTime endDate) {
+  static bool canAddEvent(List<Event> events, TimeOfDay startDateHour,
+      TimeOfDay endDateHour, selectedDay) {
+    DateTime startDate = Utils.timeOfDayToDateTime(selectedDay, startDateHour);
+    DateTime endDate = Utils.timeOfDayToDateTime(selectedDay, endDateHour);
     return events.every((event) =>
         startDate.isAfter(event.endDate) && endDate.isBefore(event.startDate));
   }

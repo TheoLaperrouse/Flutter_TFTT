@@ -3,35 +3,15 @@ import 'package:flutter_tftt/api.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Map<String, String> divNames = {
-  'FED': 'Nationale',
-  'L03': 'Régionale',
-  'D35': 'Départemental'
-};
-
-String getName(String nomEquipe) {
-  List<String> names = divNames.keys.toList();
-  for (var name in names) {
-    if (nomEquipe.startsWith(name)) {
-      return nomEquipe
-          .substring(4)
-          .split('Poule')[0]
-          .replaceAll('Division', 'Départemental')
-          .replaceAll('_', ' ');
-    }
-  }
-  return nomEquipe;
-}
-
 List<Team> teamsFromJson(String str) =>
     List<Team>.from(json.decode(str).map((x) => Team.fromJson(x)));
 
 String teamsToJson(List<Team> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-Future<List<Team>> fetchTeams(numClub) async {
+Future<List<Team>> fetchTeams() async {
   final response = await http.get(
-    Uri.parse("${Api.apiBaseUrl}/teams/$numClub"),
+    Uri.parse("${Api.apiBaseUrl}/teams"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -47,23 +27,23 @@ Future<List<Team>> fetchTeams(numClub) async {
 
 class Team {
   Team({
-    @required this.nomEquipe,
+    @required this.nom,
     @required this.championnat,
     @required this.lien,
   });
 
-  String nomEquipe;
+  String nom;
   String championnat;
   String lien;
 
   factory Team.fromJson(Map<String, dynamic> json) => Team(
-        nomEquipe: getName(json["equipe"]),
+        nom: json["nom"],
         lien: json["lien"],
         championnat: json["championnat"],
       );
 
   Map<String, dynamic> toJson() => {
-        "nomEquipe": nomEquipe,
+        "nom": nom,
         "lien": lien,
         "championnat": championnat,
       };

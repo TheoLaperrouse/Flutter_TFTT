@@ -91,3 +91,8 @@ flutter build appbundle --release
 - Anniversaires des Licenciés en récupérant les infos du SPID
 - Back qui appelle l'API de la Fédé pour récupération des derniers matchs
 - Ajout du classement de la ProB 
+
+## Refacto
+
+initPlayer & initTeams dans les models
+tableBooking rename to Calendar

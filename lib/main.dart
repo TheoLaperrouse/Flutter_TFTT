@@ -1,7 +1,9 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/models/live.dart';
 import 'package:flutter_tftt/models/player.dart';
+import 'package:flutter_tftt/models/team.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
 
 // screens
@@ -18,6 +20,7 @@ Future<void> main() async {
   await initSettings();
   await initPlayer();
   await initLive();
+  await initTeams();
   //initializeNotification();
   runApp(ApplicationTFTT());
 }
@@ -32,6 +35,14 @@ Future<void> initPlayer() async {
   await fetchPlayer(Settings.getValue<String>('numLicence', '3524012'))
       .then((result) {
     globals.player = result;
+  });
+}
+
+Future<void> initTeams() async {
+  await fetchTeams().then((result) {
+    globals.teams = result;
+    globals.teams.forEachIndexed(
+        (index, team) => globals.teamSettings[index.toString()] = team.nom);
   });
 }
 

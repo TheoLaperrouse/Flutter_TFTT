@@ -4,10 +4,12 @@ import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/player.dart';
 import 'package:flutter_tftt/utils/settings_key.dart';
+import 'package:flutter_tftt/utils/globals.dart' as globals;
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
-import 'package:flutter_tftt/utils/globals.dart' as globals;
+
+Map<String, String> teamName = globals.teamSettings;
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -43,19 +45,15 @@ Widget buildProfileType() => DropDownSettingsTile<String>(
 Widget buildLicenceNum() => TextInputSettingsTile(
       title: 'Numéro De Licence',
       settingKey: 'numLicence',
-      initialValue: '0',
+      initialValue: '3524012',
       onChange: (numLic) =>
           {fetchPlayer(numLic).then((result) => globals.player = result)},
     );
 Widget buildTeam() => DropDownSettingsTile<String>(
       title: 'Équipe',
       settingKey: 'team',
-      values: <String, String>{
-        'r1': "Régionale 1",
-        'r2': "Régionale 2",
-        'r3': "Régionale 3",
-      },
-      selected: 'r1',
+      values: teamName,
+      selected: '0',
     );
 Widget buildNotification() => SwitchSettingsTile(
     title: 'Activer/Désactiver les notifications',

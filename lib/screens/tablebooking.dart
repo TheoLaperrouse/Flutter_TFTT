@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/RecurringEvents.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/event.dart';
+import 'package:flutter_tftt/screens/event-form.dart';
 import 'package:flutter_tftt/utils/utils.dart';
 //widgets
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
@@ -23,19 +24,6 @@ class _TableBookingState extends State<TableBooking> {
   TimeOfDay startDate = TimeOfDay.now();
   TimeOfDay endDate;
   String typeBooking;
-
-  void _selectTime() async {
-    final TimeOfDay newTime = await showTimePicker(
-      context: context,
-      initialTime: startDate,
-      initialEntryMode: TimePickerEntryMode.input,
-    );
-    if (newTime != null) {
-      setState(() {
-        startDate = newTime;
-      });
-    }
-  }
 
   List<Event> eventsList;
   @override
@@ -174,68 +162,13 @@ class _TableBookingState extends State<TableBooking> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: MaterialColors.drawer,
-        onPressed: () => showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text("Réserver une table"),
-            content: Container(
-              height: 100,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(
-                    onPressed: _selectTime,
-                    child: Text("Heure de début de l'événement"),
-                  ),
-                  // if (!Utils.canAddEvent(
-                  //   _getEventsfromDay(selectedDay),
-                  //   Utils.timeOfDayToDateTime(selectedDay, startDate),
-                  //   Utils.timeOfDayToDateTime(selectedDay, endDate),
-                  // ))
-                  //   Text(Utils.timeOfDayToDateTime(selectedDay, startDate)
-                  //       .toIso8601String()),
-                  // Text(""),
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                child: Text("Annuler"),
-                onPressed: () => Navigator.pop(context),
-              ),
-              TextButton(
-                child: Text("Valider"),
-                onPressed: () async {
-                  endDate = TimeOfDay(
-                      hour: this.startDate.hour + 1,
-                      minute: this.startDate.minute);
-                  var event = Event(
-                      startDate: Utils.timeOfDayToDateTime(
-                          this.selectedDay, this.startDate),
-                      endDate: Utils.timeOfDayToDateTime(
-                          this.selectedDay, this.endDate),
-                      type: 'Réservation de Table',
-                      title: 'Réservation de Table');
-                  DateTime formattedDay = Utils.getDay(selectedDay);
-                  // Add an event
-                  if (selectedEvents[formattedDay] != null) {
-                    selectedEvents[formattedDay].add(event);
-                  } else {
-                    selectedEvents[formattedDay] = [event];
-                  }
-                  await postEvent(event);
-                  // Refresh list
-                  setState(() {
-                    selectedDay = formattedDay;
-                  });
-                  Navigator.pop(context);
-                  return;
-                },
-              ),
-            ],
-          ),
-        ),
-        label: Text("Ajouter une réservation de table"),
+        onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EventForm(
+                    selectedDay: selectedDay,
+                    dayEvents: _getEventsfromDay(selectedDay)))),
+        label: Text("Ajouter une événement"),
         icon: Icon(Icons.add),
       ),
     );
