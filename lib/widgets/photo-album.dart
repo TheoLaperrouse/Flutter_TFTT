@@ -15,13 +15,13 @@ class PhotoAlbum extends StatelessWidget {
           mainAxisSpacing: 10,
           crossAxisCount: 3,
           children: imgArray
-              .map((item) => Container(
+              .map((networkImage) => Container(
                   height: 100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       image: DecorationImage(
-                          image: AssetImage('assets/img/match.jpg'),
-                          fit: BoxFit.cover))))
+                          image: NetworkImage(networkImage),
+                          fit: BoxFit.contain))))
               .toList()),
     );
   }

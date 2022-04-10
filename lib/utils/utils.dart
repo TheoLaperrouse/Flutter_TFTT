@@ -34,11 +34,19 @@ class Utils {
   }
 
   static bool canAddEvent(List<Event> events, TimeOfDay startDateHour,
-      TimeOfDay endDateHour, selectedDay) {
-    DateTime startDate = Utils.timeOfDayToDateTime(selectedDay, startDateHour);
-    DateTime endDate = Utils.timeOfDayToDateTime(selectedDay, endDateHour);
-    return events.every((event) =>
-        startDate.isAfter(event.endDate) && endDate.isBefore(event.startDate));
+      TimeOfDay endDateHour, DateTime selectedDay, type) {
+    if (type != 'Réservation de Table') {
+      DateTime startDate =
+          Utils.timeOfDayToDateTime(selectedDay, startDateHour);
+      DateTime endDate = Utils.timeOfDayToDateTime(selectedDay, endDateHour);
+
+      return startDate.isBefore(endDate)
+          ? events.every((event) =>
+              startDate.isAfter(event.endDate) ||
+              startDate.isBefore(event.startDate))
+          : false;
+    }
+    return true;
   }
 
   static DateTime getDay(selectedDay) {

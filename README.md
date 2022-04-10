@@ -83,7 +83,6 @@ flutter build appbundle --release
 
 ### Back
 
-- Uniformiser les routes (pas de majuscules isLive)
 - Ajouter Évenements Récurrents
 
 ## Idées

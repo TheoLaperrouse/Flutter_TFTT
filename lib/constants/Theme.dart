@@ -31,6 +31,7 @@ class eventMarker {
   static const colors = {
     "Entraînement": Colors.black,
     "Réservation de Table": Colors.blue,
+    "Séance Individuelle": Colors.indigo,
     "Match de Pro B": Colors.red,
   };
 }

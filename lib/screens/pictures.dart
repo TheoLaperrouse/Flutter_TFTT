@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
-import 'package:flutter_tftt/models/picture.dart';
+import 'package:flutter_tftt/models/post.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
@@ -17,9 +17,9 @@ class _PictureAlbum extends State<PictureAlbum> {
   @override
   void initState() {
     super.initState();
-    fetchPictureLinks().then((result) {
+    fetchPosts().then((result) {
       setState(() {
-        pictures = result;
+        pictures = result.map((res) => res.networkImg).toList();
       });
     });
   }

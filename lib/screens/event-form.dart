@@ -29,7 +29,6 @@ class _EventFormState extends State<EventForm> {
   TimeOfDay endDate = TimeOfDay.now();
 
   void _selectTime(bool isStartDate) async {
-    debugPrint(widget.dayEvents.toString());
     final TimeOfDay newTime = await showTimePicker(
         context: context,
         builder: (context, childWidget) {
@@ -98,24 +97,30 @@ class _EventFormState extends State<EventForm> {
               ),
               Text(formatDate(
                   dropdownValue, startDate, endDate, widget.selectedDay)),
-              // if (!Utils.canAddEvent(
-              //     widget.dayEvents, startDate, endDate, widget.selectedDay))
-              //   Text('Événement impossible à créer',
-              //       style: TextStyle(color: Colors.red)),
-              ElevatedButton(
-                onPressed: () async {
-                  await postEvent(new Event(
-                    startDate: Utils.timeOfDayToDateTime(
-                        widget.selectedDay, startDate),
-                    endDate:
-                        Utils.timeOfDayToDateTime(widget.selectedDay, endDate),
-                    type: this.dropdownValue,
-                    title: this.dropdownValue,
-                  ));
-                  Navigator.pushReplacementNamed(context, '/tablebooking');
-                },
-                child: Text("Créer l'événement"),
-              ),
+              Utils.canAddEvent(widget.dayEvents, startDate, endDate,
+                      widget.selectedDay, dropdownValue)
+                  ? ElevatedButton(
+                      onPressed: () async {
+                        await postEvent(new Event(
+                          startDate: Utils.timeOfDayToDateTime(
+                              widget.selectedDay, startDate),
+                          endDate: Utils.timeOfDayToDateTime(
+                              widget.selectedDay, endDate),
+                          type: this.dropdownValue,
+                          title: this.dropdownValue,
+                        ));
+                        Navigator.pushReplacementNamed(
+                            context, '/tablebooking');
+                      },
+                      child: Text("Créer l'événement"),
+                    )
+                  : Text(
+                      "Pas d'entraîneur disponible à cette horaire pour une séance Individuelle ou Début > Fin de l'événement",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20)),
               SizedBox(
                 height: 60,
               ),
