@@ -8,6 +8,8 @@ import 'package:flutter_tftt/utils/globals.dart' as globals;
 
 // screens
 import 'package:flutter_tftt/screens/home.dart';
+import 'package:flutter_tftt/screens/ordering.dart';
+import 'package:flutter_tftt/screens/events.dart';
 import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
@@ -57,6 +59,8 @@ class ApplicationTFTT extends StatelessWidget {
           "/home": (BuildContext context) => new Home(),
           // "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
+          "/events": (BuildContext context) => new Events(),
+          "/ordering": (BuildContext context) => new OrderingForm(),
           "/settings": (BuildContext context) => new SettingsPage(),
           "/tablebooking": (BuildContext context) => new TableBooking(),
           "/teams": (BuildContext context) => new Teams(),

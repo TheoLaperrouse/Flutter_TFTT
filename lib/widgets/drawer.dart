@@ -39,7 +39,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Posts du TFTT",
-                isSelected: currentPage == "Posts du TFTT" ? true : false),
+                isSelected: currentPage == "Posts du TFTT"),
             DrawerTile(
                 icon: Icons.account_circle,
                 onTap: () {
@@ -48,7 +48,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Mon profil",
-                isSelected: currentPage == "Mon profil" ? true : false),
+                isSelected: currentPage == "Mon profil"),
             // DrawerTile(
             //     icon: Icons.table_view,
             //     onTap: () {
@@ -57,7 +57,7 @@ class MaterialDrawer extends StatelessWidget {
             //     },
             //     iconColor: Colors.black,
             //     title: "Calcul de Points",
-            //     isSelected: currentPage == "Calculator" ? true : false),
+            //     isSelected: currentPage == "Calculator"),
             DrawerTile(
                 icon: Icons.group,
                 onTap: () {
@@ -66,7 +66,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Les Équipes",
-                isSelected: currentPage == "Les Équipes" ? true : false),
+                isSelected: currentPage == "Les Équipes"),
             DrawerTile(
                 icon: Icons.calendar_today,
                 onTap: () {
@@ -74,8 +74,17 @@ class MaterialDrawer extends StatelessWidget {
                     Navigator.pushReplacementNamed(context, '/tablebooking');
                 },
                 iconColor: Colors.black,
-                title: "Calendrier",
-                isSelected: currentPage == "Calendrier" ? true : false),
+                title: "Calendrier / Rés. de table",
+                isSelected: currentPage == "Calendrier"),
+            DrawerTile(
+                icon: Icons.calendar_today_outlined,
+                onTap: () {
+                  if (currentPage != "Événéments")
+                    Navigator.pushReplacementNamed(context, '/events');
+                },
+                iconColor: Colors.black,
+                title: "Événéments",
+                isSelected: currentPage == "Événéments"),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {
@@ -84,7 +93,17 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Album Photo",
-                isSelected: currentPage == "Album Photo" ? true : false),
+                isSelected: currentPage == "Album Photo"),
+            DrawerTile(
+                icon: Icons.shopping_cart,
+                onTap: () {
+                  if (currentPage != "Commande Matériel")
+                    Navigator.pushReplacementNamed(context, '/ordering');
+                },
+                iconColor: Colors.black,
+                title: "Commande Matériel",
+                isSelected: currentPage == "Commande Matériel"),
+
             DrawerTile(
                 icon: Icons.settings,
                 onTap: () {
@@ -93,7 +112,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Paramètres",
-                isSelected: currentPage == "Paramètres" ? true : false),
+                isSelected: currentPage == "Paramètres"),
           ],
         ))
       ])),

@@ -109,6 +109,9 @@ class _EventFormState extends State<EventForm> {
                           type: this.dropdownValue,
                           title: this.dropdownValue,
                         ));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                                "Votre événement a bien été créé, retour au calendrier...")));
                         Navigator.pushReplacementNamed(
                             context, '/tablebooking');
                       },
