@@ -16,8 +16,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-# Last Deployed Version on Playstore : 1.0.0+9
-version: 1.0.0+9
+# Last Deployed Version on Playstore : 1.0.0+10
+version: 1.0.0+10
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

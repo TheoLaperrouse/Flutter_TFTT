@@ -5,6 +5,12 @@ import 'package:flutter_tftt/utils/settings_key.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
 import 'package:flutter_tftt/utils/utils.dart';
 
+String tagTitle() {
+  String profile = SettingsKey
+      .profileType[Settings.getValue<String>('profileType', 'joueur')];
+  return '${profile}${globals.player.numClub == "03350060" && profile == "Joueur" ? ' TFTT' : ''}';
+}
+
 class DrawerHeaderWidget extends StatelessWidget {
   DrawerHeaderWidget();
 
@@ -31,7 +37,7 @@ class DrawerHeaderWidget extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 6),
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(4),
                               color: MaterialColors.label),
@@ -42,15 +48,13 @@ class DrawerHeaderWidget extends StatelessWidget {
                                   color: Colors.white, fontSize: 16))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
+                      padding: const EdgeInsets.only(right: 8.0),
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 6),
+                        padding: EdgeInsets.symmetric(horizontal: 4),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             color: Colors.purple),
-                        child: Text(
-                            SettingsKey.profileType[Settings.getValue<String>(
-                                'profileType', 'joueur')],
+                        child: Text(tagTitle(),
                             style:
                                 TextStyle(color: Colors.white, fontSize: 16)),
                       ),

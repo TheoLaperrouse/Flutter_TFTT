@@ -6,11 +6,13 @@ class CardHorizontal extends StatelessWidget {
       {this.title = "Placeholder Title",
       this.cta = "",
       this.networkImg = null,
+      this.assetImg = null,
       this.tap = defaultFunc,
       this.height = 130});
 
   final String cta;
   final String networkImg;
+  final String assetImg;
   final Function tap;
   final String title;
   final double height;
@@ -75,7 +77,8 @@ class CardHorizontal extends StatelessWidget {
                         image: DecorationImage(
                             image: this.networkImg != null
                                 ? NetworkImage(networkImg)
-                                : AssetImage('assets/img/match.jpg'),
+                                : AssetImage(
+                                    this.assetImg ?? 'assets/img/match.jpg'),
                             fit: BoxFit.cover))),
               ),
             ),

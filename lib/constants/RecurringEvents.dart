@@ -8,7 +8,7 @@ List<List<Event>> recurringEvents = [
     Event(
         startDate: new DateTime(0, 0, 0, 17),
         endDate: new DateTime(0, 0, 0, 18, 30),
-        title: "Entraînement Jeune",
+        title: "Entraînement Jeunes",
         type: "Entraînement"),
     Event(
         startDate: new DateTime(0, 0, 0, 18, 30),
@@ -20,17 +20,17 @@ List<List<Event>> recurringEvents = [
     Event(
         startDate: new DateTime(0, 0, 0, 10),
         endDate: new DateTime(0, 0, 0, 12),
-        title: "Entrainement Jeunes/Handisport",
+        title: "Entraînement Jeunes / Handisport",
         type: "Entraînement"),
     Event(
         startDate: new DateTime(0, 0, 0, 14),
         endDate: new DateTime(0, 0, 0, 17, 30),
-        title: "Entrainement Jeunes",
+        title: "Entraînement Jeunes",
         type: "Entraînement"),
     Event(
         startDate: new DateTime(0, 0, 0, 19),
         endDate: new DateTime(0, 0, 0, 21),
-        title: "Entrainement Loisirs encadré",
+        title: "Entraînement Loisirs encadré",
         type: "Entraînement")
   ],
   [

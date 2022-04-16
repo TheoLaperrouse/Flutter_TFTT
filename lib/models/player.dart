@@ -20,16 +20,19 @@ Future<Player> fetchPlayer(numLic) async {
 
 class Player {
   Player({
+    this.numClub,
     this.points,
     this.prenom,
     this.nom,
   });
 
+  String numClub;
   String points;
   String prenom;
   String nom;
 
   factory Player.fromJson(Map<String, dynamic> json) => Player(
+        numClub: json["nclub"],
         points: json["points"],
         prenom: json["prenom"],
         nom: json["nom"],
@@ -37,6 +40,7 @@ class Player {
 
   Map<String, dynamic> toJson() => {
         "points": points,
+        "nclub": numClub,
         "prenom": prenom,
         "nom": nom,
       };

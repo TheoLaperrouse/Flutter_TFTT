@@ -43,12 +43,12 @@ class MaterialDrawer extends StatelessWidget {
             DrawerTile(
                 icon: Icons.account_circle,
                 onTap: () {
-                  if (currentPage != "Mon profil")
+                  if (currentPage != "Mon Profil")
                     Navigator.pushReplacementNamed(context, '/profile');
                 },
                 iconColor: Colors.black,
                 title: "Mon profil",
-                isSelected: currentPage == "Mon profil"),
+                isSelected: currentPage == "Mon Profil"),
             // DrawerTile(
             //     icon: Icons.table_view,
             //     onTap: () {
@@ -79,11 +79,11 @@ class MaterialDrawer extends StatelessWidget {
             DrawerTile(
                 icon: Icons.calendar_today_outlined,
                 onTap: () {
-                  if (currentPage != "Événéments")
+                  if (currentPage != "Événements TFTT")
                     Navigator.pushReplacementNamed(context, '/events');
                 },
                 iconColor: Colors.black,
-                title: "Événéments",
+                title: "Événements TFTT",
                 isSelected: currentPage == "Événéments"),
             DrawerTile(
                 icon: Icons.photo_camera,
@@ -94,16 +94,16 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Album Photo",
                 isSelected: currentPage == "Album Photo"),
-            DrawerTile(
-                icon: Icons.shopping_cart,
-                onTap: () {
-                  if (currentPage != "Commande Matériel")
-                    Navigator.pushReplacementNamed(context, '/ordering');
-                },
-                iconColor: Colors.black,
-                title: "Commande Matériel",
-                isSelected: currentPage == "Commande Matériel"),
-
+            if (globals.player.numClub == "03350060")
+              DrawerTile(
+                  icon: Icons.shopping_cart,
+                  onTap: () {
+                    if (currentPage != "Commande Matériel")
+                      Navigator.pushReplacementNamed(context, '/ordering');
+                  },
+                  iconColor: Colors.black,
+                  title: "Commande Matériel",
+                  isSelected: currentPage == "Commande Matériel"),
             DrawerTile(
                 icon: Icons.settings,
                 onTap: () {

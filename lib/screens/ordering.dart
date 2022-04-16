@@ -19,10 +19,10 @@ class _OrderingState extends State<OrderingForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: Navbar(
-          title: "Application du TFTT",
+          title: "Commande de Matériel",
         ),
         backgroundColor: MaterialColors.bgColorScreen,
-        drawer: MaterialDrawer(currentPage: "Posts du TFTT"),
+        drawer: MaterialDrawer(currentPage: "Commande Matériel"),
         body: Container(
             padding: EdgeInsets.only(left: 16.0, right: 16.0),
             child: Column(

@@ -9,12 +9,12 @@ import 'package:flutter_tftt/utils/globals.dart' as globals;
 // screens
 import 'package:flutter_tftt/screens/home.dart';
 import 'package:flutter_tftt/screens/ordering.dart';
-import 'package:flutter_tftt/screens/events.dart';
 import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/tablebooking.dart';
 import 'package:flutter_tftt/screens/teams.dart';
+import 'package:flutter_tftt/screens/club-events.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
@@ -59,7 +59,7 @@ class ApplicationTFTT extends StatelessWidget {
           "/home": (BuildContext context) => new Home(),
           // "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
-          "/events": (BuildContext context) => new Events(),
+          "/events": (BuildContext context) => new ClubEvents(),
           "/ordering": (BuildContext context) => new OrderingForm(),
           "/settings": (BuildContext context) => new SettingsPage(),
           "/tablebooking": (BuildContext context) => new TableBooking(),

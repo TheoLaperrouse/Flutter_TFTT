@@ -11,6 +11,15 @@ import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+String pictureLink(String title) {
+  if (title.contains('Handisport')) {
+    return 'img/handisport.jpg';
+  } else if (title.contains('Jeunes')) {
+    return 'img/jeunes.jpg';
+  }
+  return 'img/match.jpg';
+}
+
 class TableBooking extends StatefulWidget {
   @override
   _TableBookingState createState() => _TableBookingState();
@@ -155,7 +164,8 @@ class _TableBookingState extends State<TableBooking> {
               ..._getEventsfromDay(selectedDay).map((Event event) => CardHorizontal(
                   title:
                       '${event.title} : \n${DateFormat('kk:mm').format(event.startDate)} - ${DateFormat('kk:mm').format(event.endDate)}',
-                  height: 110)),
+                  height: 110,
+                  assetImg: pictureLink(event.title))),
             ],
           )))
         ],
@@ -168,7 +178,7 @@ class _TableBookingState extends State<TableBooking> {
                 builder: (context) => EventForm(
                     selectedDay: selectedDay,
                     dayEvents: _getEventsfromDay(selectedDay)))),
-        label: Text("Ajouter une événement"),
+        label: Text("Ajouter un événement"),
         icon: Icon(Icons.add),
       ),
     );
