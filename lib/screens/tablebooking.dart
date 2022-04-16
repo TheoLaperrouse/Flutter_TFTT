@@ -13,11 +13,11 @@ import 'package:table_calendar/table_calendar.dart';
 
 String pictureLink(String title) {
   if (title.contains('Handisport')) {
-    return 'img/handisport.jpg';
+    return 'assets/img/handisport.jpg';
   } else if (title.contains('Jeunes')) {
-    return 'img/jeunes.jpg';
+    return 'assets/img/jeunes.jpg';
   }
-  return 'img/match.jpg';
+  return 'assets/img/match.jpg';
 }
 
 class TableBooking extends StatefulWidget {
