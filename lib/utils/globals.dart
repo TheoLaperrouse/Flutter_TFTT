@@ -7,4 +7,5 @@ import 'package:flutter_tftt/models/team.dart';
 Player player;
 Live live;
 List<Team> teams;
-Map<String, String> teamSettings = {};
+Map<String, Team> teamSettings = {};
+Map<String, String> teamName = {};

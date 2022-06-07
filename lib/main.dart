@@ -43,8 +43,14 @@ Future<void> initPlayer() async {
 Future<void> initTeams() async {
   await fetchTeams().then((result) {
     globals.teams = result;
-    globals.teams.forEachIndexed(
-        (index, team) => globals.teamSettings[index.toString()] = team.nom);
+    globals.teams.forEachIndexed((index, team) => {
+          globals.teamName[index.toString()] = team.nom,
+          globals.teamSettings[index.toString()] = Team(
+              nom: team.nom,
+              pouleid: team.pouleid,
+              division: team.division,
+              championnat: team.championnat)
+        });
   });
 }
 

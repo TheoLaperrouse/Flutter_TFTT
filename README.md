@@ -36,36 +36,23 @@ flutter create .
 
 Lance l'application en vue Web :
 ```
-flutter run
+flutter run -d chrome --web-renderer html
 ```
 Il y a des problèmes avec la récupération des images depuis l'appli web, du à un bug connu, pas de Headers pour NetworkImage voir ici:
 
 https://github.com/flutter/flutter/issues/57187 & https://api.flutter.dev/flutter/painting/NetworkImage/headers.html
-
-Utiliser cette commande pour modifier la gestion de la récupération des images:
-```
-flutter run -d chrome --web-renderer html
-```
 
 Build de l'application pour release sur PlayStore :
 ```
 flutter build appbundle --release
 ```
 
-## Librairies
-
-- scrollable_positioned_list: ^0.1.7
-- carousel_slider: ^2.2.1
-- font_awesome_flutter: ^8.8.1
-- table_calendar: ^3.0.3
-- webview_flutter: ^3.0.0
-- url_launcher: ^5.2.7
-- flutter_settings_screens: ^0.2.2+1 
-- http: ^0.13.4
-
-À ajouter :
-
-- flutter_lints: 
+Build de l'application pour release sur Github :
+```
+flutter create .
+flutter build web --web-renderer html --release
+```
+Le dossier build/web peut alors être exporter sur la github page via la branche gh-page
 
 ## À faire
 
@@ -77,7 +64,6 @@ flutter build appbundle --release
 - Faire un profil plus joli avec des Card plus estéthiques
 - Trouver des images adéquates pour les événements
 - Live redirection => vers le live
-- Légende code couleur event
 - Modal à la première utilisation pour renseigner les settings
 - Tableau de clé-valeur Equipe - Label (BDD ou Constant)
 
@@ -89,9 +75,4 @@ flutter build appbundle --release
 
 - Anniversaires des Licenciés en récupérant les infos du SPID
 - Back qui appelle l'API de la Fédé pour récupération des derniers matchs
-- Ajout du classement de la ProB 
-
-## Refacto
-
-initPlayer & initTeams dans les models
-tableBooking rename to Calendar
+- Ajout du classement de la ProB

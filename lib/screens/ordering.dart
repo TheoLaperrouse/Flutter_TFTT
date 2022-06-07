@@ -71,7 +71,6 @@ class _OrderingState extends State<OrderingForm> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    debugPrint(_ordering.text.toString());
                     await postOrdering(new Ordering(
                         name: _name.text, ordering: _ordering.text));
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

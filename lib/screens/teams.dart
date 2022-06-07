@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/team.dart';
+import 'package:flutter_tftt/screens/team-rank.dart';
 //widgets
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/card-horizontal.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
-import '../utils/utils.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
-
-String baseUrl =
-    "https://www.pongiste.fr/include/pages/equipes.php?cx_poule=207068&D1=37884&organisme_pere=1&poule=1&num_club=03350060&color=5E9DC8&taille=&nomequipe=T.T%20THORIGNE-FOUILLARD%201&nomequipe=T.T%20THORIGNE-FOUILLARD%201&num_phase=all&numpoule=1&division=FED_PRO+B+Messieurs&phase=1";
 
 class Teams extends StatefulWidget {
   @override
@@ -40,7 +37,12 @@ class _TeamsState extends State<Teams> {
                             cta: "Voir les résultats de l'équipe",
                             title: teams[index].nom,
                             tap: () {
-                              Utils.launchLink(baseUrl);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TeamRank(
+                                          pouleid: teams[index].pouleid,
+                                          division: teams[index].division)));
                             }),
                       ),
                     ),

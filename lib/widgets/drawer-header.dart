@@ -42,8 +42,10 @@ class DrawerHeaderWidget extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                               color: MaterialColors.label),
                           child: Text(
-                              Utils.formatTeamName(globals.teamSettings[
-                                  Settings.getValue<String>('team', '0')]),
+                              Utils.formatTeamName(globals
+                                  .teamSettings[
+                                      Settings.getValue<String>('team', '0')]
+                                  .nom),
                               style: TextStyle(
                                   color: Colors.white, fontSize: 16))),
                     ),

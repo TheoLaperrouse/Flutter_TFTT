@@ -6,9 +6,6 @@ import 'package:http/http.dart' as http;
 List<Team> teamsFromJson(String str) =>
     List<Team>.from(json.decode(str).map((x) => Team.fromJson(x)));
 
-String teamsToJson(List<Team> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 Future<List<Team>> fetchTeams() async {
   final response = await http.get(
     Uri.parse("${Api.apiBaseUrl}/teams"),
@@ -28,23 +25,20 @@ Future<List<Team>> fetchTeams() async {
 class Team {
   Team({
     @required this.nom,
+    @required this.pouleid,
+    @required this.division,
     @required this.championnat,
-    @required this.lien,
   });
 
   String nom;
+  String pouleid;
+  String division;
   String championnat;
-  String lien;
 
   factory Team.fromJson(Map<String, dynamic> json) => Team(
         nom: json["nom"],
-        lien: json["lien"],
+        pouleid: json["pouleid"],
+        division: json["division"],
         championnat: json["championnat"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "nom": nom,
-        "lien": lien,
-        "championnat": championnat,
-      };
 }

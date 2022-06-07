@@ -9,7 +9,7 @@ import 'package:flutter_tftt/utils/globals.dart' as globals;
 import 'package:flutter_tftt/widgets/navbar.dart';
 import 'package:flutter_tftt/widgets/drawer.dart';
 
-Map<String, String> teamName = globals.teamSettings;
+Map<String, String> teamName = globals.teamName;
 
 class SettingsPage extends StatefulWidget {
   @override
