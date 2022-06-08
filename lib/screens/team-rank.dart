@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tftt/constants/Theme.dart';
 import 'package:flutter_tftt/models/teamsRanking.dart';
+import 'package:flutter_tftt/widgets/drawer.dart';
+import 'package:flutter_tftt/widgets/navbar.dart';
 
 class TeamRank extends StatefulWidget {
   final String pouleid;
@@ -28,35 +31,43 @@ class _TeamRankState extends State<TeamRank> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: DataTable(
-        columns: const <DataColumn>[
-          DataColumn(
-            label: Text('Nom'),
-          ),
-          DataColumn(
-            label: Text('Classement'),
-          ),
-          DataColumn(
-            label: Text('Victoires'),
-          ),
-          DataColumn(
-            label: Text('Défaites'),
-          ),
-        ],
-        rows: List<DataRow>.generate(
-          teamsRanking.length,
-          (int index) => DataRow(
-            cells: <DataCell>[
-              DataCell(Text(teamsRanking[index].name)),
-              DataCell(Text(teamsRanking[index].ranking)),
-              DataCell(Text(teamsRanking[index].victory)),
-              DataCell(Text(teamsRanking[index].defeat))
-            ],
-          ),
+    return Scaffold(
+        appBar: Navbar(
+          title: "Classement Équipe",
         ),
-      ),
-    );
+        drawer: MaterialDrawer(currentPage: "Classement Équipe"),
+        backgroundColor: MaterialColors.bgColorScreen,
+        body: teamsRanking.length > 0
+            ? SizedBox(
+                width: double.infinity,
+                child: DataTable(
+                  columns: const <DataColumn>[
+                    DataColumn(
+                      label: Text('Nom'),
+                    ),
+                    DataColumn(
+                      label: Text('Classement'),
+                    ),
+                    DataColumn(
+                      label: Text('Victoires'),
+                    ),
+                    DataColumn(
+                      label: Text('Défaites'),
+                    ),
+                  ],
+                  rows: List<DataRow>.generate(
+                    teamsRanking.length,
+                    (int index) => DataRow(
+                      cells: <DataCell>[
+                        DataCell(Text(teamsRanking[index].name)),
+                        DataCell(Text(teamsRanking[index].ranking)),
+                        DataCell(Text(teamsRanking[index].victory)),
+                        DataCell(Text(teamsRanking[index].defeat))
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            : Center(child: CircularProgressIndicator()));
   }
 }
