@@ -63,7 +63,6 @@ class ApplicationTFTT extends StatelessWidget {
         initialRoute: "/home",
         routes: <String, WidgetBuilder>{
           "/home": (BuildContext context) => new Home(),
-          // "/calculator": (BuildContext context) => new Calculator(),
           "/profile": (BuildContext context) => new Profile(),
           "/events": (BuildContext context) => new ClubEvents(),
           "/ordering": (BuildContext context) => new OrderingForm(),

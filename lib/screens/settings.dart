@@ -25,7 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       drawer: MaterialDrawer(currentPage: "Paramètres"),
       backgroundColor: MaterialColors.bgColorScreen,
-      body: SettingsGroup(title: "Paramètres utilisateur", children: [
+      body: Column(children: [
         buildProfileType(),
         buildLicenceNum(),
         buildTeam(),

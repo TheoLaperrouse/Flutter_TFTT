@@ -49,15 +49,6 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Mon profil",
                 isSelected: currentPage == "Mon Profil"),
-            // DrawerTile(
-            //     icon: Icons.table_view,
-            //     onTap: () {
-            //       if (currentPage != "Calculator")
-            //         Navigator.pushReplacementNamed(context, '/calculator');
-            //     },
-            //     iconColor: Colors.black,
-            //     title: "Calcul de Points",
-            //     isSelected: currentPage == "Calculator"),
             DrawerTile(
                 icon: Icons.group,
                 onTap: () {
@@ -84,7 +75,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Événements TFTT",
-                isSelected: currentPage == "Événéments"),
+                isSelected: currentPage == "Événements TFTT"),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {

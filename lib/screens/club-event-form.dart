@@ -24,7 +24,7 @@ class _ClubEventFormState extends State<ClubEventForm> {
           title: widget.clubEvent.title,
         ),
         backgroundColor: MaterialColors.bgColorScreen,
-        drawer: MaterialDrawer(currentPage: "Calendrier"),
+        drawer: MaterialDrawer(currentPage: "Événements TFTT"),
         body: Container(
           padding: EdgeInsets.only(left: 16.0, right: 16.0),
           child: Column(
