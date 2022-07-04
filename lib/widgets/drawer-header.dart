@@ -36,18 +36,24 @@ class DrawerHeaderWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
-                      child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: MaterialColors.label),
-                          child: Text(
-                              Utils.formatTeamName(globals
-                                  .teamSettings[
-                                      Settings.getValue<String>('team', '0')]
-                                  .nom),
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 16))),
+                      child: GestureDetector(
+                        onTap: () async {
+                          await Utils.launchLink(
+                              'https://docs.google.com/spreadsheets/d/1aAC_RtHYOlGIgsX5TKxTboNG8BXuWQfylY3oU0tx7hU/edit?usp=sharing');
+                        },
+                        child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 4),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: MaterialColors.label),
+                            child: Text(
+                                Utils.formatTeamName(globals
+                                    .teamSettings[
+                                        Settings.getValue<String>('team', '0')]
+                                    .nom),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16))),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
