@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:flutter_tftt/utils/globals.dart' as globals;
 import 'package:flutter_tftt/utils/utils.dart';
 //widgets
@@ -62,7 +63,7 @@ class MaterialDrawer extends StatelessWidget {
                 icon: Icons.calendar_today,
                 onTap: () {
                   if (currentPage != "Calendrier")
-                    Navigator.pushReplacementNamed(context, '/tablebooking');
+                    Navigator.pushReplacementNamed(context, '/calendar');
                 },
                 iconColor: Colors.black,
                 title: "Calendrier / Rés. de table",
@@ -75,7 +76,7 @@ class MaterialDrawer extends StatelessWidget {
                 },
                 iconColor: Colors.black,
                 title: "Événements TFTT",
-                isSelected: currentPage == "Événements TFTT"),
+                isSelected: currentPage == "Événéments"),
             DrawerTile(
                 icon: Icons.photo_camera,
                 onTap: () {
@@ -95,6 +96,19 @@ class MaterialDrawer extends StatelessWidget {
                   iconColor: Colors.black,
                   title: "Commande Matériel",
                   isSelected: currentPage == "Commande Matériel"),
+            if (Settings.getValue<String>('profileType', 'joueur') ==
+                'entraineur')
+              DrawerTile(
+                icon: Icons.notification_add,
+                onTap: () {
+                  //pushNotification('La salle est ouverte par ${globals.player.prenom} ${globals.player.prenom} ce soir')
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          "Votre notification a bien été envoyé à tous les joueurs du TFTT")));
+                },
+                iconColor: Colors.black,
+                title: "Notif. salle ouverte",
+              ),
             DrawerTile(
                 icon: Icons.settings,
                 onTap: () {

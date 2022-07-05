@@ -16,6 +16,9 @@ class ProfileHeader extends StatelessWidget {
             style:
                 TextStyle(height: 2, fontWeight: FontWeight.bold, fontSize: 20))
       ]),
+      SizedBox(
+        height: 20,
+      ),
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         buildButton(context, globals.player.points.split('.')[0], "points"),
         buildButton(context, nbVictory.toString(), "victoires"),
@@ -24,7 +27,10 @@ class ProfileHeader extends StatelessWidget {
             context,
             (nbVictory / (nbVictory + nbDefeat) * 100).toStringAsFixed(2),
             "% de victoires"),
-      ])
+      ]),
+      SizedBox(
+        height: 20,
+      ),
     ]);
   }
 }

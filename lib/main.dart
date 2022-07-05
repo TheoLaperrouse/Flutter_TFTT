@@ -12,7 +12,7 @@ import 'package:flutter_tftt/screens/ordering.dart';
 import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
-import 'package:flutter_tftt/screens/tablebooking.dart';
+import 'package:flutter_tftt/screens/calendar.dart';
 import 'package:flutter_tftt/screens/teams.dart';
 import 'package:flutter_tftt/screens/club-events.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -31,13 +31,6 @@ Future<void> initSettings() async {
   await Settings.init(
     cacheProvider: SharePreferenceCache(),
   );
-}
-
-Future<void> initPlayer() async {
-  await fetchPlayer(Settings.getValue<String>('numLicence', '3524012'))
-      .then((result) {
-    globals.player = result;
-  });
 }
 
 Future<void> initTeams() async {
@@ -67,7 +60,7 @@ class ApplicationTFTT extends StatelessWidget {
           "/events": (BuildContext context) => new ClubEvents(),
           "/ordering": (BuildContext context) => new OrderingForm(),
           "/settings": (BuildContext context) => new SettingsPage(),
-          "/tablebooking": (BuildContext context) => new TableBooking(),
+          "/calendar": (BuildContext context) => new Calendar(),
           "/teams": (BuildContext context) => new Teams(),
           "/picturealbum": (BuildContext context) => new PictureAlbum(),
         });

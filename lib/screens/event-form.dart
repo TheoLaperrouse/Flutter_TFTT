@@ -112,8 +112,7 @@ class _EventFormState extends State<EventForm> {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                                 "Votre événement a bien été créé, retour au calendrier...")));
-                        Navigator.pushReplacementNamed(
-                            context, '/tablebooking');
+                        Navigator.pushReplacementNamed(context, '/calendar');
                       },
                       child: Text("Créer l'événement"),
                     )

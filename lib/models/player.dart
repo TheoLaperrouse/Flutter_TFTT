@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_tftt/api.dart';
+import 'package:flutter_tftt/utils/globals.dart' as globals;
 
 Player playerFromJson(String str) => Player.fromJson(json.decode(str));
 
@@ -44,4 +46,11 @@ class Player {
         "prenom": prenom,
         "nom": nom,
       };
+}
+
+Future<void> initPlayer() async {
+  await fetchPlayer(Settings.getValue<String>('numLicence', '3524012'))
+      .then((result) {
+    globals.player = result;
+  });
 }

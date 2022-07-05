@@ -55,14 +55,11 @@ class _Profile extends State<Profile> {
                           child: Column(
                               children: new List.generate(
                     matches.length,
-                    (index) => Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
-                      child: CardMatch(
-                          date: matches[index].date,
-                          name: matches[index].nom,
-                          victoire: matches[index].victoire,
-                          classement: matches[index].classement),
-                    ),
+                    (index) => CardMatch(
+                        date: matches[index].date,
+                        name: matches[index].nom,
+                        victoire: matches[index].victoire,
+                        classement: matches[index].classement),
                   ))))
                 ],
               )

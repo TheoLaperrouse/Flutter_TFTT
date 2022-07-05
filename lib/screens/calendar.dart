@@ -20,12 +20,12 @@ String pictureLink(String title) {
   return 'assets/img/match.jpg';
 }
 
-class TableBooking extends StatefulWidget {
+class Calendar extends StatefulWidget {
   @override
-  _TableBookingState createState() => _TableBookingState();
+  _CalendarState createState() => _CalendarState();
 }
 
-class _TableBookingState extends State<TableBooking> {
+class _CalendarState extends State<Calendar> {
   Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = Utils.getDay(DateTime.now());

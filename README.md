@@ -34,13 +34,14 @@ Build de l'application :
 flutter create . 
 ```
 
-Lance l'application en vue Web :
-```
-flutter run -d chrome --web-renderer html
-```
 Il y a des problèmes avec la récupération des images depuis l'appli web, du à un bug connu, pas de Headers pour NetworkImage voir ici:
 
 https://github.com/flutter/flutter/issues/57187 & https://api.flutter.dev/flutter/painting/NetworkImage/headers.html
+
+Utiliser cette commande pour modifier la gestion de la récupération des images & lancer l'application en vue Web :
+```
+flutter run -d chrome --web-renderer html
+```
 
 Build de l'application pour release sur PlayStore :
 ```
@@ -59,13 +60,11 @@ Le dossier build/web peut alors être exporter sur la github page via la branche
 ### Front
 
 - Compos d'équipes
-- Place dématérialisée match de Pro
 - Renommer les types dans les events
 - Faire un profil plus joli avec des Card plus estéthiques
-- Trouver des images adéquates pour les événements
+- - Trouver des images adéquates pour les événements
 - Live redirection => vers le live
 - Modal à la première utilisation pour renseigner les settings
-- Tableau de clé-valeur Equipe - Label (BDD ou Constant)
 
 ### Back
 
