@@ -9,7 +9,6 @@ import 'package:flutter_tftt/utils/globals.dart' as globals;
 // screens
 import 'package:flutter_tftt/screens/home.dart';
 import 'package:flutter_tftt/screens/ordering.dart';
-import 'package:flutter_tftt/screens/pictures.dart';
 import 'package:flutter_tftt/screens/profile.dart';
 import 'package:flutter_tftt/screens/settings.dart';
 import 'package:flutter_tftt/screens/calendar.dart';
@@ -62,7 +61,6 @@ class ApplicationTFTT extends StatelessWidget {
           "/settings": (BuildContext context) => new SettingsPage(),
           "/calendar": (BuildContext context) => new Calendar(),
           "/teams": (BuildContext context) => new Teams(),
-          "/picturealbum": (BuildContext context) => new PictureAlbum(),
         });
   }
 }

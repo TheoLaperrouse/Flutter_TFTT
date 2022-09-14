@@ -62,7 +62,6 @@ Le dossier build/web peut alors être exporter sur la github page via la branche
 - Compos d'équipes
 - Renommer les types dans les events
 - Faire un profil plus joli avec des Card plus estéthiques
-- - Trouver des images adéquates pour les événements
 - Live redirection => vers le live
 - Modal à la première utilisation pour renseigner les settings
 

@@ -68,24 +68,16 @@ class MaterialDrawer extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Calendrier / Rés. de table",
                 isSelected: currentPage == "Calendrier"),
-            DrawerTile(
-                icon: Icons.calendar_today_outlined,
-                onTap: () {
-                  if (currentPage != "Événements TFTT")
-                    Navigator.pushReplacementNamed(context, '/events');
-                },
-                iconColor: Colors.black,
-                title: "Événements TFTT",
-                isSelected: currentPage == "Événéments"),
-            DrawerTile(
-                icon: Icons.photo_camera,
-                onTap: () {
-                  if (currentPage != "Album Photo")
-                    Navigator.pushReplacementNamed(context, '/picturealbum');
-                },
-                iconColor: Colors.black,
-                title: "Album Photo",
-                isSelected: currentPage == "Album Photo"),
+            if (globals.player.numClub == "03350060")
+              DrawerTile(
+                  icon: Icons.calendar_today_outlined,
+                  onTap: () {
+                    if (currentPage != "Événements TFTT")
+                      Navigator.pushReplacementNamed(context, '/events');
+                  },
+                  iconColor: Colors.black,
+                  title: "Événements TFTT",
+                  isSelected: currentPage == "Événements TFTT"),
             if (globals.player.numClub == "03350060")
               DrawerTile(
                   icon: Icons.shopping_cart,
@@ -96,6 +88,15 @@ class MaterialDrawer extends StatelessWidget {
                   iconColor: Colors.black,
                   title: "Commande Matériel",
                   isSelected: currentPage == "Commande Matériel"),
+            DrawerTile(
+                icon: Icons.shopping_cart,
+                onTap: () async {
+                  await Utils.launchLink(
+                      'https://www.helloasso.com/associations/thorigne-fouillard-tennis-de-table/evenements/pro-a-tftt-rouen-spo-1ere-journee/widget');
+                },
+                iconColor: Colors.black,
+                title: "Billetterie Pro A",
+                isSelected: currentPage == "Billetterie Pro A"),
             if (Settings.getValue<String>('profileType', 'joueur') ==
                 'entraineur')
               DrawerTile(
@@ -104,7 +105,7 @@ class MaterialDrawer extends StatelessWidget {
                   //pushNotification('La salle est ouverte par ${globals.player.prenom} ${globals.player.prenom} ce soir')
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
-                          "Votre notification a bien été envoyé à tous les joueurs du TFTT")));
+                          "Votre notification a bien été envoyée à tous les joueurs du TFTT")));
                 },
                 iconColor: Colors.black,
                 title: "Notif. salle ouverte",
